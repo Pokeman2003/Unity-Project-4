@@ -9,17 +9,19 @@ public class characterplayer : MonoBehaviour
     public float rotationSpeed = 48f; //For now, a slow, but manageable speed. I don't want a cap, I want mouse control in the future. Very important given the verticality of my game.
 
     //Horizontal and Vertical inputs. This is a new way to handle that, and explorercam.cs could probably use it, but explorercam.cs is just a generic placeholder.
-    private float verticalInput;
-    private float horizontalInput;
+    private float verticalIn;
+    private float horizontalIn;
+
+    private Rigidbody rB;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rB = GetComponent<Rigidbody>(); //Grabs the Rigidbody component and puts it into rB.
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update() //No longer necessary, in lieu of the new movement system.
     {
         //Intellisense really screwed me over. I'm really considering refactoring verticalInput and horizontalInput to drop INPUT because it kept trying to autocomplete to that instead of my intended Input.GetAxis.
         verticalInput = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime;
@@ -28,5 +30,17 @@ public class characterplayer : MonoBehaviour
         //Being the "smart" guy I am, I get to drop Time.deltaTime from this calculation by doing it sooner.
         transform.Translate(Vector3.forward * verticalInput);
         transform.Rotate(Vector3.up * horizontalInput);
+    }*/
+    void FixedUpdate() // Run at every physics update. AND SUDDENLY IT STOPS WORKING GOD FUCKING DAMN IT. THANK YOU UNITY.
+    {
+        //Rotational vector.
+        Vector3 rotVec = Vector3.up * horizontalIn;
+        
+        //Quaternions, my biggest enemy. Applies a angle to the character(?).
+        Quaternion angleRot = Quaternion.Euler(rotVec * Time.fixedDeltaTime);
+
+        //Moves and rotates the character based on key inputs.
+        rB.MovePosition(transform.position + transform.forward * verticalIn * Time.fixedDeltaTime);
+        rB.MoveRotation(rB.rotation * angleRot);
     }
 }

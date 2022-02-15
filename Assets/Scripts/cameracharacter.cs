@@ -15,8 +15,8 @@ public class cameracharacter : MonoBehaviour
         targetObj = GameObject.Find("Character_Player").transform;
     }
 
-    // LastUpdate is called once per frame, at the end. Unfortunately, Fixed and LastUpdate do not work for me.
-    void Update()
+    // LateUpdate is called once per frame, at the end. Unfortunately, Fixed and LastUpdate do not work for me. As of today, a day after this complaint was made, it all works.
+    void LateUpdate()
     {
         //Transform the position to behind the target, and then rotate the camera to look at the object itself.
         transform.position = targetObj.TransformPoint(viewOffset);
