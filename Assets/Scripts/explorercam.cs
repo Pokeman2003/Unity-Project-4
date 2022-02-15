@@ -9,15 +9,15 @@ public class explorercam : MonoBehaviour
     public float RotationLR;
     public float RotationUD;
     public Vector3 resetPos;
-    public Quaternion resetRot;
+    public Vector2 resetRot;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Exploration camera loaded! RLR, RUD, rP, rR!");
-        RotationLR = transform.rotation.y;
-        RotationUD = transform.rotation.x;
+        RotationLR = transform.eulerAngles.y;
+        RotationUD = transform.eulerAngles.x;
         resetPos = transform.position;
-        resetRot = transform.rotation;
+        resetRot = new Vector2(RotationUD, RotationLR); //Crappy fix for a really annoying problem.
         Debug.Log(RotationLR);
         Debug.Log(RotationUD);
         Debug.Log(resetPos);

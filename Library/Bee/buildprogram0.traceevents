@@ -1,18 +1,8 @@
 { "pid": "BuildProgram", "ph":"M", "name": "process_name", "args": {"name": "BuildProgram"} },
 { "pid": "BuildProgram", "ph":"M", "name": "process_sort_index", "args": {"sort_index": -1} },
 { "pid": "BuildProgram", "tid": 1, "ph":"M", "name": "thread_name", "args": {"name": ""} },
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997393268.2,"dur": 447488.8, "ph":"X", "name": "BuildProgram"},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997393427,"dur": 50419.3, "ph":"X", "name": "BuildProgramContextCCtor"},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997706863.7,"dur": 77180.9, "ph":"X", "name": "SetupSpecificConfigImpl GameAssembly", "args": { "detail": "master_WebGL_wasm"}
-},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997712913.7,"dur": 66387.4, "ph":"X", "name": "SetupSpecificConfigImpl il2cpp", "args": { "detail": "master_WebGL_wasm"}
-},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997713611.5,"dur": 41271.7, "ph":"X", "name": "SetupSpecificConfigImpl bdwgc", "args": { "detail": "master_WebGL_wasm"}
-},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997755150.5,"dur": 2398, "ph":"X", "name": "SetupSpecificConfigImpl zlib", "args": { "detail": "master_WebGL_wasm"}
-},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997792074.4,"dur": 8795, "ph":"X", "name": "SetupSpecificConfigImpl build", "args": { "detail": "debug_WebGL_wasm"}
-},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997816840.5,"dur": 3465.8, "ph":"X", "name": "OutputData.Write"},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997820306.7,"dur": 20449.9, "ph":"X", "name": "Backend.Write"},
-{ "pid": "BuildProgram", "tid": 1,"ts": 49997820899.3,"dur": 10871.3, "ph":"X", "name": "JsonToString"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 58926166874.8,"dur": 219826.6, "ph":"X", "name": "BuildProgram"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 58926167041.4,"dur": 77879.8, "ph":"X", "name": "BuildProgramContextCCtor"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 58926338085.4,"dur": 6822.6, "ph":"X", "name": "OutputData.Write"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 58926344908.4,"dur": 41792.6, "ph":"X", "name": "Backend.Write"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 58926345501.1,"dur": 18055.1, "ph":"X", "name": "JsonToString"},
