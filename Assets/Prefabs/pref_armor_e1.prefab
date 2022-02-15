@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4240115204850483733}
   - component: {fileID: 1956999994992954591}
   m_Layer: 0
-  m_Name: pref_armor
+  m_Name: pref_armor_e1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

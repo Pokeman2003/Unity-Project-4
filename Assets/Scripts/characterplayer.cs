@@ -6,7 +6,7 @@ public class characterplayer : MonoBehaviour
 {
     //Speeds.
     public float movementSpeed = 16f; //A little call back, ROBLOXians move at 16 studs a second.
-    public float rotationSpeed = 48f; //For now, a slow, but manageable speed. I don't want a cap, I want mouse control in the future. Very important given the verticality of my game.
+    public float rotationSpeed = 96f; //For now, a slow, but manageable speed. I don't want a cap, I want mouse control in the future. Very important given the verticality of my game.
     private float speedLimiter = .5f;
 
     //Horizontal and Vertical inputs. This is a new way to handle that, and explorercam.cs could probably use it, but explorercam.cs is just a generic placeholder.
