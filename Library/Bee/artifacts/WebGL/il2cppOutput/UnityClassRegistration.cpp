@@ -108,12 +108,14 @@ class CapsuleCollider; template <> void RegisterUnityClass<CapsuleCollider>(cons
 class Collider; template <> void RegisterUnityClass<Collider>(const char*);
 class MeshCollider; template <> void RegisterUnityClass<MeshCollider>(const char*);
 class PhysicsManager; template <> void RegisterUnityClass<PhysicsManager>(const char*);
+class Rigidbody; template <> void RegisterUnityClass<Rigidbody>(const char*);
+class SphereCollider; template <> void RegisterUnityClass<SphereCollider>(const char*);
 
 void RegisterAllClasses()
 {
 void RegisterBuiltinTypes();
 RegisterBuiltinTypes();
-	//Total: 68 non stripped classes
+	//Total: 70 non stripped classes
 	//0. AnimationClip
 	RegisterUnityClass<AnimationClip>("Animation");
 	//1. Animator
@@ -250,5 +252,9 @@ RegisterBuiltinTypes();
 	RegisterUnityClass<MeshCollider>("Physics");
 	//67. PhysicsManager
 	RegisterUnityClass<PhysicsManager>("Physics");
+	//68. Rigidbody
+	RegisterUnityClass<Rigidbody>("Physics");
+	//69. SphereCollider
+	RegisterUnityClass<SphereCollider>("Physics");
 
 }

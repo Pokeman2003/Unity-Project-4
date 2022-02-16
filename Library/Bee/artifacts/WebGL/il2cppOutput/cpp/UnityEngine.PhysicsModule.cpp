@@ -34,6 +34,8 @@ struct Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3;
 struct DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E;
 // System.Reflection.MethodInfo
 struct MethodInfo_t;
+// UnityEngine.Rigidbody
+struct Rigidbody_t268697F5A994213ED97393309870968BC1C7393C;
 // System.String
 struct String_t;
 // System.Void
@@ -574,6 +576,11 @@ struct Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76  : public Component_t3
 {
 };
 
+// UnityEngine.Rigidbody
+struct Rigidbody_t268697F5A994213ED97393309870968BC1C7393C  : public Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3
+{
+};
+
 // UnityEngine.BoxCollider
 struct BoxCollider_tFA5D239388334D6DE0B8FFDAD6825C5B03786E23  : public Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76
 {
@@ -749,6 +756,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RaycastHitU5BU5D_t008B8309DE422FE7567068D743D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RaycastHitU5BU5D_t008B8309DE422FE7567068D743D68054D5EBF1A8* Physics_RaycastAll_m667158D9575D8F858485A6663743B90123FC0417 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___origin0, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___direction1, float ___maxDistance2, int32_t ___layerMask3, int32_t ___queryTriggerInteraction4, const RuntimeMethod* method) ;
 // System.Int32 UnityEngine.PhysicsScene::Raycast(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.RaycastHit[],System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t PhysicsScene_Raycast_m3BD571CF6901C59C286D7B58ED9D15D836BC54C3 (PhysicsScene_t55222DD37072E8560EE054A07C0E3FE391D9D9DE* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___origin0, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___direction1, RaycastHitU5BU5D_t008B8309DE422FE7567068D743D68054D5EBF1A8* ___raycastHits2, float ___maxDistance3, int32_t ___layerMask4, int32_t ___queryTriggerInteraction5, const RuntimeMethod* method) ;
+// System.Void UnityEngine.Rigidbody::get_rotation_Injected(UnityEngine.Quaternion&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_get_rotation_Injected_m38431B37B78B4DF59B59F9CB7E609820430051F8 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___ret0, const RuntimeMethod* method) ;
+// System.Void UnityEngine.Rigidbody::MovePosition_Injected(UnityEngine.Vector3&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_MovePosition_Injected_mF2CDF14960A920DCDDEAFA49A7E066A2FF021E37 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___position0, const RuntimeMethod* method) ;
+// System.Void UnityEngine.Rigidbody::MoveRotation_Injected(UnityEngine.Quaternion&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_MoveRotation_Injected_m75B6A86B8BE8D68714CA5356DDCC11D24B96B505 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___rot0, const RuntimeMethod* method) ;
 // System.String UnityEngine.UnityString::Format(System.String,System.Object[])
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* UnityString_Format_m560566B98CA1AC19A6C2B424AE640F6E95D3B9B0 (String_t* ___fmt0, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___args1, const RuntimeMethod* method) ;
 // System.String UnityEngine.PhysicsScene::ToString()
@@ -1836,6 +1849,68 @@ typedef RaycastHitU5BU5D_t008B8309DE422FE7567068D743D68054D5EBF1A8* (*Physics_In
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// UnityEngine.Quaternion UnityEngine.Rigidbody::get_rotation()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Rigidbody_get_rotation_m07882A7024FB3F96BA13EC577A96163BBB621AA1 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, const RuntimeMethod* method) 
+{
+Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		Rigidbody_get_rotation_Injected_m38431B37B78B4DF59B59F9CB7E609820430051F8(__this, (&V_0), NULL);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_0 = V_0;
+		return L_0;
+	}
+}
+// System.Void UnityEngine.Rigidbody::MovePosition(UnityEngine.Vector3)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_MovePosition_mB2CD29ABC8F59AC338C0A3A5A6B75C38FDA92CA9 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___position0, const RuntimeMethod* method) 
+{
+{
+		Rigidbody_MovePosition_Injected_mF2CDF14960A920DCDDEAFA49A7E066A2FF021E37(__this, (&___position0), NULL);
+		return;
+	}
+}
+// System.Void UnityEngine.Rigidbody::MoveRotation(UnityEngine.Quaternion)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_MoveRotation_m85825C7206E770E39DED9EE6D792702F577A891D (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___rot0, const RuntimeMethod* method) 
+{
+{
+		Rigidbody_MoveRotation_Injected_m75B6A86B8BE8D68714CA5356DDCC11D24B96B505(__this, (&___rot0), NULL);
+		return;
+	}
+}
+// System.Void UnityEngine.Rigidbody::get_rotation_Injected(UnityEngine.Quaternion&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_get_rotation_Injected_m38431B37B78B4DF59B59F9CB7E609820430051F8 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___ret0, const RuntimeMethod* method) 
+{
+typedef void (*Rigidbody_get_rotation_Injected_m38431B37B78B4DF59B59F9CB7E609820430051F8_ftn) (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C*, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974*);
+	static Rigidbody_get_rotation_Injected_m38431B37B78B4DF59B59F9CB7E609820430051F8_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Rigidbody_get_rotation_Injected_m38431B37B78B4DF59B59F9CB7E609820430051F8_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Rigidbody::get_rotation_Injected(UnityEngine.Quaternion&)");
+	_il2cpp_icall_func(__this, ___ret0);
+}
+// System.Void UnityEngine.Rigidbody::MovePosition_Injected(UnityEngine.Vector3&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_MovePosition_Injected_mF2CDF14960A920DCDDEAFA49A7E066A2FF021E37 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___position0, const RuntimeMethod* method) 
+{
+typedef void (*Rigidbody_MovePosition_Injected_mF2CDF14960A920DCDDEAFA49A7E066A2FF021E37_ftn) (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C*, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*);
+	static Rigidbody_MovePosition_Injected_mF2CDF14960A920DCDDEAFA49A7E066A2FF021E37_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Rigidbody_MovePosition_Injected_mF2CDF14960A920DCDDEAFA49A7E066A2FF021E37_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Rigidbody::MovePosition_Injected(UnityEngine.Vector3&)");
+	_il2cpp_icall_func(__this, ___position0);
+}
+// System.Void UnityEngine.Rigidbody::MoveRotation_Injected(UnityEngine.Quaternion&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_MoveRotation_Injected_m75B6A86B8BE8D68714CA5356DDCC11D24B96B505 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___rot0, const RuntimeMethod* method) 
+{
+typedef void (*Rigidbody_MoveRotation_Injected_m75B6A86B8BE8D68714CA5356DDCC11D24B96B505_ftn) (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C*, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974*);
+	static Rigidbody_MoveRotation_Injected_m75B6A86B8BE8D68714CA5356DDCC11D24B96B505_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Rigidbody_MoveRotation_Injected_m75B6A86B8BE8D68714CA5356DDCC11D24B96B505_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Rigidbody::MoveRotation_Injected(UnityEngine.Quaternion&)");
+	_il2cpp_icall_func(__this, ___rot0);
+}
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

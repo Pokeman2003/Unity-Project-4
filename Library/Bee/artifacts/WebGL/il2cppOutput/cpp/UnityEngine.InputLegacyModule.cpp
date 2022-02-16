@@ -706,6 +706,16 @@ typedef bool (*Input_GetKeyInt_m0F87DE11F4454B68013997B42EDF48F62017AAE7_ftn) (i
 	bool icallRetVal = _il2cpp_icall_func(___key0);
 	return icallRetVal;
 }
+// System.Single UnityEngine.Input::GetAxis(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Input_GetAxis_m1F49B26F24032F45FB4583C95FB24E6771A161D4 (String_t* ___axisName0, const RuntimeMethod* method) 
+{
+typedef float (*Input_GetAxis_m1F49B26F24032F45FB4583C95FB24E6771A161D4_ftn) (String_t*);
+	static Input_GetAxis_m1F49B26F24032F45FB4583C95FB24E6771A161D4_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Input_GetAxis_m1F49B26F24032F45FB4583C95FB24E6771A161D4_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Input::GetAxis(System.String)");
+	float icallRetVal = _il2cpp_icall_func(___axisName0);
+	return icallRetVal;
+}
 // System.Boolean UnityEngine.Input::GetMouseButton(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Input_GetMouseButton_mE545CF4B790C6E202808B827E3141BEC3330DB70 (int32_t ___button0, const RuntimeMethod* method) 
 {

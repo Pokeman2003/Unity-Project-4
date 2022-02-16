@@ -257,6 +257,8 @@ struct Calendar_t0A117CC7532A54C17188C2EFEA1F79DB20DF3A3B;
 struct CancellationTokenSource_tAAE1E0033BCFC233801F8CB4CED5C852B350CB7B;
 // System.Globalization.CompareInfo
 struct CompareInfo_t1B1A6AC3486B570C76ABA52149C9BD4CD82F9E57;
+// UnityEngine.Component
+struct Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3;
 // System.Reflection.ConstructorInfo
 struct ConstructorInfo_t1B5967EE7E5554272F79F8880183C70AD240EEEB;
 // System.Threading.ContextCallback
@@ -3219,6 +3221,11 @@ struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2  : public Task_t751C4CC3
 	RuntimeObject* ___m_result_22;
 };
 
+// UnityEngine.Component
+struct Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
+{
+};
+
 // UnityEngine.Experimental.GlobalIllumination.LightDataGI
 struct LightDataGI_t47D2197E863C0DDA40C2182FBF0A21367E468E21 
 {
@@ -4051,6 +4058,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Buffer_Memmove_mE2FD779AEAE4F226AFCAF275
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR intptr_t RuntimeTypeHandle_get_Value_mDC366CF36C3E21505134EAEE72BD7629107D762A_inline (RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B* __this, const RuntimeMethod* method) ;
 // System.Void System.Runtime.RuntimeImports::Memmove_wbarrier(System.Byte*,System.Byte*,System.UInt32,System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RuntimeImports_Memmove_wbarrier_mC563385425BC68BD59B96AD2FFEDCBC482A31BBA (uint8_t* ___dest0, uint8_t* ___src1, uint32_t ___len2, intptr_t ___type_handle3, const RuntimeMethod* method) ;
+// UnityEngine.Component UnityEngine.Component::GetComponent(System.Type)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* Component_GetComponent_m4352437B839B9601EB007CAC1007C8E1FB8A427D (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, Type_t* ___type0, const RuntimeMethod* method) ;
 // System.Attribute System.Reflection.CustomAttributeExtensions::GetCustomAttribute(System.Reflection.Assembly,System.Type)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Attribute_tFDA8EFEFB0711976D22474794576DAF28F7440AA* CustomAttributeExtensions_GetCustomAttribute_m056785B4C31CED65B0F38986EE830315551CE030 (Assembly_t* ___element0, Type_t* ___attributeType1, const RuntimeMethod* method) ;
 // System.Collections.Generic.IEnumerable`1<System.Attribute> System.Reflection.CustomAttributeExtensions::GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
@@ -7971,6 +7980,33 @@ IL_001b:
 	{
 		RuntimeObject* L_6 = V_0;
 		return L_6;
+	}
+}
+// T UnityEngine.Component::GetComponent<System.Object>()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Component_GetComponent_TisRuntimeObject_m7181F81CAEC2CF53F5D2BC79B7425C16E1F80D33_gshared (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method) 
+{
+static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Type_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+RuntimeObject* V_0 = NULL;
+	{
+		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_0 = { reinterpret_cast<intptr_t> (il2cpp_rgctx_type(method->rgctx_data, 0)) };
+		il2cpp_codegen_runtime_class_init_inline(Type_t_il2cpp_TypeInfo_var);
+		Type_t* L_1;
+		L_1 = Type_GetTypeFromHandle_m2570A2A5B32A5E9D9F0F38B37459DA18736C823E(L_0, NULL);
+		Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* L_2;
+		L_2 = Component_GetComponent_m4352437B839B9601EB007CAC1007C8E1FB8A427D(__this, L_1, NULL);
+		V_0 = ((RuntimeObject*)Castclass((RuntimeObject*)L_2, il2cpp_rgctx_data(method->rgctx_data, 1)));
+		goto IL_0019;
+	}
+
+IL_0019:
+	{
+		RuntimeObject* L_3 = V_0;
+		return L_3;
 	}
 }
 // System.Boolean System.Diagnostics.Contracts.Contract::ForAll<System.Object>(System.Collections.Generic.IEnumerable`1<T>,System.Predicate`1<T>)
