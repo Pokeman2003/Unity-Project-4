@@ -7,14 +7,16 @@ public class characterplayer : MonoBehaviour
     //Speeds.
     public float movementSpeed = 16f; //A little call back, ROBLOXians move at 16 studs a second.
     public float rotationSpeed = 96f; //For now, a slow, but manageable speed. I don't want a cap, I want mouse control in the future. Very important given the verticality of my game.
-    public float jumpSpeed = 64f;
+    public float jumpSpeed = 8f; //How much velocity to add to our jump height.
     private float speedLimiter = .5f;
 
     //States and handling.
     enum currentAction { Default, Jump, Run, Die };
     //Ground handling
-    public float groundDistance = 0.1f;
-    public LayerMask groundLayer;
+    public float groundDistance = 0.1f; // ... I don't know what this is.
+    public LayerMask groundLayer; // Our ground layer.
+    //Projectile
+    public GameObject playerProjectile; //The projectile. Has to be installed in the Unity editor, much to my chagrin.
 
     //Horizontal and Vertical inputs. This is a new way to handle that, and explorercam.cs could probably use it, but explorercam.cs is just a generic placeholder.
     private float verticalIn;
@@ -30,6 +32,7 @@ public class characterplayer : MonoBehaviour
     {
         rB = GetComponent<Rigidbody>(); //Grabs the Rigidbody component and puts it into rB.
         colliding = GetComponent<CapsuleCollider>(); //Likewise, grabs the collider to put into col. Renamed to colliding because of Intellisense.
+        groundLayer = LayerMask.GetMask("Ground"); //And now I don't have to care about what's going into this. groundLayer is GROUND.
     }
 
     // Update is called once per frame
@@ -42,7 +45,12 @@ public class characterplayer : MonoBehaviour
         //And here we have the jump command.
         if(checkGround() && Input.GetKeyDown(KeyCode.Space))
         {
-            rB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+            rB.AddForce(Vector3.up * (jumpSpeed * speedLimiter), ForceMode.Impulse);
+        }
+
+        if (Input.GetMouseButtonDown(0)) //If M1 is pressed, we fire!
+        {
+            GameObject newProjectile = Instantiate(playerProjectile, transform.position + new Vector3(.8f, 0.4f, 0f), transform.rotation) as GameObject; //Creates the stinkin' projectile. In the future, it might be best to leave the rest of it as a script in the prefab.
         }
 
         /*//No longer necessary, in lieu of the new movement system.
