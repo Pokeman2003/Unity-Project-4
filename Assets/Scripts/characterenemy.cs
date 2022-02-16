@@ -28,7 +28,7 @@ public class characterenemy : MonoBehaviour
                 Debug.Log("A rocket has entered my hearing range!");
                 break;
             default:
-            Debug.Log("Something unimportant has entered the zone.");
+            Debug.Log("Something unimportant has entered the zone. " + item.name);
             break;
         }
     }
@@ -43,7 +43,21 @@ public class characterenemy : MonoBehaviour
                 Debug.Log("Relaxing, the rocket has left my range.");
                 break;
             default:
-                Debug.Log("Something unimportant has exited the zone.");
+                Debug.Log("Something unimportant has exited the zone. " + item.name);
+                break;
+        }
+    }
+
+    void OnCollisionEnter(Collision item)
+    {
+        switch (item.gameObject.name)
+        {
+            case "Explosion":
+                Debug.Log("I'm DEAD!");
+                Destroy(this);
+                break;
+            default:
+                Debug.Log("Someone touched me but I'm not dead. " + item.gameObject.name);
                 break;
         }
     }

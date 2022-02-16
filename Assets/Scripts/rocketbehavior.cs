@@ -25,7 +25,7 @@ public class rocketbehavior : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collider)
+    void OnCollisionEnter(Collision item)
     {
         if (primeTime < speedCount)
         {
@@ -34,7 +34,7 @@ public class rocketbehavior : MonoBehaviour
         } else
         {
             int mistake = primeTime - speedCount;
-            Debug.Log("Rocket hit " + collider.collider.name + " but prime time was " + mistake + " cycles away from explosions!"); // There's a certain amount of cycles before an explosion can occur.
+            Debug.Log("Rocket hit " + item.gameObject.name + " but prime time was " + mistake + " cycles away from explosions!"); // There's a certain amount of cycles before an explosion can occur.
         }
     }
 

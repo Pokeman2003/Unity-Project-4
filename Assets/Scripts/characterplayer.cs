@@ -50,7 +50,8 @@ public class characterplayer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) //If M1 is pressed, we fire!
         {
-            GameObject newProjectile = Instantiate(playerProjectile, transform.position + new Vector3(.8f, 0.4f, 0f), transform.rotation) as GameObject; //Creates the stinkin' projectile. In the future, it might be best to leave the rest of it as a script in the prefab.
+            Vector3 offset = new Vector3(transform.right.x * 0.65f, 0.7f, transform.right.z*0.65f);
+            GameObject newProjectile = Instantiate(playerProjectile, transform.position + offset, transform.rotation) as GameObject; //Creates the stinkin' projectile. In the future, it might be best to leave the rest of it as a script in the prefab.
         }
 
         /*//No longer necessary, in lieu of the new movement system.

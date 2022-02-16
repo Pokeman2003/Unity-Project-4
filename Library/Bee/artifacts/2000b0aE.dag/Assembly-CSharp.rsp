@@ -324,6 +324,7 @@
 "Assets/Scripts/characterenemy.cs"
 "Assets/Scripts/characterplayer.cs"
 "Assets/Scripts/explorercam.cs"
+"Assets/Scripts/gman.cs"
 "Assets/Scripts/pickupbeahvior.cs"
 "Assets/Scripts/rocketbehavior.cs"
 "Assets/Scripts/rocketexplosion.cs"
