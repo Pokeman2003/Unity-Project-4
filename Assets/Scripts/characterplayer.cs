@@ -7,19 +7,29 @@ public class characterplayer : MonoBehaviour
     //Speeds.
     public float movementSpeed = 16f; //A little call back, ROBLOXians move at 16 studs a second.
     public float rotationSpeed = 96f; //For now, a slow, but manageable speed. I don't want a cap, I want mouse control in the future. Very important given the verticality of my game.
+    public float jumpSpeed = 64f;
     private float speedLimiter = .5f;
+
+    //States and handling.
+    enum currentAction { Default, Jump, Run, Die };
+    //Ground handling
+    public float groundDistance = 0.1f;
+    public LayerMask groundLayer;
 
     //Horizontal and Vertical inputs. This is a new way to handle that, and explorercam.cs could probably use it, but explorercam.cs is just a generic placeholder.
     private float verticalIn;
     private float horizontalIn;
 
+    //Rigidbody and colliders.
     private Rigidbody rB;
+    private Collider colliding;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rB = GetComponent<Rigidbody>(); //Grabs the Rigidbody component and puts it into rB.
+        colliding = GetComponent<CapsuleCollider>(); //Likewise, grabs the collider to put into col. Renamed to colliding because of Intellisense.
     }
 
     // Update is called once per frame
@@ -28,6 +38,12 @@ public class characterplayer : MonoBehaviour
         //Intellisense really screwed me over. I'm really considering refactoring verticalInput and horizontalInput to drop INPUT because it kept trying to autocomplete to that instead of my intended Input.GetAxis.
         verticalIn = Input.GetAxis("Vertical") * movementSpeed * speedLimiter; //* Time.deltaTime;
         horizontalIn = Input.GetAxis("Horizontal") * rotationSpeed * speedLimiter; //* Time.deltaTime;
+
+        //And here we have the jump command.
+        if(checkGround() && Input.GetKeyDown(KeyCode.Space))
+        {
+            rB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        }
 
         /*//No longer necessary, in lieu of the new movement system.
         //Being the "smart" guy I am, I get to drop Time.deltaTime from this calculation by doing it sooner.
@@ -51,5 +67,17 @@ public class characterplayer : MonoBehaviour
         //Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
         //_rB.MovePosition(this.transform.position + this.transform.forward * verticalIn* Time.fixedDeltaTime);
         //_rB.MoveRotation(_rB.rotation * angleRot);
+    }
+
+    private bool checkGround() // I have no idea what this function is doing.
+    {
+        //Define the collision boundaries? I guess???
+        Vector3 itemBottom = new Vector3(colliding.bounds.center.x, colliding.bounds.min.y, colliding.bounds.center.z);
+
+        //Honestly, can't even begin to break this down. Checks the bottom to the ground layer? Something like that.
+        bool state = Physics.CheckCapsule(colliding.bounds.center, itemBottom, groundDistance, groundLayer, QueryTriggerInteraction.Ignore);
+
+        //Whatever it is, returns a bool... Which, at the current moment, NEVER returns true.
+        return state;
     }
 }

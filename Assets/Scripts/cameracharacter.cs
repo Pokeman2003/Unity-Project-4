@@ -5,8 +5,11 @@ using UnityEngine;
 public class cameracharacter : MonoBehaviour
 {
     //The offset and the target.
-    public Vector3 viewOffset = new Vector3(0f, 1.6f, -8f);
+    public static Vector3 defOffset = new Vector3(0f, 1.6f, -8f);
+    public Vector3 viewOffset = defOffset;
     private Transform targetObj;
+    //Adjusts the camera slightly to adjust for those three.
+    enum currentAction { Default, Jump, Run, Die };
 
     // Start is called before the first frame update
     void Start()
