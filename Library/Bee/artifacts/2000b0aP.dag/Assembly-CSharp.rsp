@@ -284,7 +284,10 @@
 "Assets/Scripts/characterenemy.cs"
 "Assets/Scripts/characterplayer.cs"
 "Assets/Scripts/explorercam.cs"
-"Assets/Scripts/pickupbeahvior.cs"
+"Assets/Scripts/gman.cs"
+"Assets/Scripts/pickupbehavior.cs"
+"Assets/Scripts/rocketbehavior.cs"
+"Assets/Scripts/rocketexplosion.cs"
 -langversion:9.0
 
 /deterministic
