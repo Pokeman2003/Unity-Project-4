@@ -9,7 +9,7 @@ public class rocketbehavior : MonoBehaviour
     public float projectileMaxSpeed = 64f; //Our projectile max speed.
     public float projectileVelocity = 1.01f; //The exponential increase of this from 1/15th of the max speed.
     public float projectileSpeed;
-    public float finalTime = 96f; // The delay before deletion, no matter what.
+    public float finalTime = 48f; // The delay before deletion, no matter what.
     private int speedCount = 0;
     public int primeTime = 100; //At what point should the speedcount prime the explosion?
     Rigidbody rB = new Rigidbody(); //Init the rigid body.
@@ -29,6 +29,7 @@ public class rocketbehavior : MonoBehaviour
     {
         if (primeTime < speedCount)
         {
+            Debug.Log("Rocket hit " + item.gameObject.name + ".");
             GameObject newExplosion = Instantiate(explosionObject, transform.position, transform.rotation) as GameObject; // Create my explosion.
             Destroy(gameObject); //And destroy the rocket, so it doesn't interfere with the explosion.
         } else
@@ -41,12 +42,19 @@ public class rocketbehavior : MonoBehaviour
     // FixedUpdate is called once per physics update.
     void FixedUpdate()
     {
-        if (projectileMaxSpeed > projectileSpeed)
+        //Debug.Log(transform.forward * projectileSpeed);
+        if (projectileMaxSpeed > projectileSpeed && speedCount > primeTime)
         {
             //Debug.Log(speedCount + "." + projectileSpeed);
-            projectileSpeed = projectileSpeed + (Mathf.Pow(projectileVelocity, speedCount) * Time.fixedDeltaTime);
+            rB.isKinematic = false;
             speedCount = speedCount + 1;
+            projectileSpeed = projectileSpeed + (Mathf.Pow(projectileVelocity, speedCount) * Time.fixedDeltaTime);
             rB.velocity = transform.forward * (projectileSpeed);
+        } else
+        {
+            speedCount = speedCount + 1;
+            projectileSpeed = projectileSpeed + (Mathf.Pow(projectileVelocity, speedCount) * Time.fixedDeltaTime);
+            transform.position += transform.forward * projectileSpeed * Time.fixedDeltaTime;
         }
     }
 }

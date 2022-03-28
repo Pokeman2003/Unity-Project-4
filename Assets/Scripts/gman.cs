@@ -30,18 +30,25 @@ public class gman : MonoBehaviour
 {
     //Internals
     private int itemCount = 0; //Generic value.
-    private int playerHP = 100; //Generic value.
+    private float playerHP = 1; //Generic value.
+    private int playerMaxHP = 100; //Generic value.
+    private int playerHPBeginRecharge = 3000; //How many milliseconds before you begin to recharge health?
+    private float playerHPRefill = 3f; //How much health do you regain per second?'
+    private bool hUpgrade = false;
+    //Recharge delatimers
     private float rRecharge = 0f; //How much deltatime has it been since Rocket usage.
     private float jRecharge = 0f; //How much deltatime has it been since Jumpjet usage.
     private float fRecharge = 0f; //How much deltatime has it been since jetpack(Flying) usage.
     private float mRecharge = 0f; //How much deltatime has it been since Machinegun usage.
+    private float hRecharge = 0f; //How long has it been since you took damage?
     //Jetpack handling.
     private bool jetPackActive = false; //Whether or not the jetpack is active at this current moment.
     private float playerFuel = 20f; //Done in seconds.
-    private float fuelRefill = .5f; //How much per second?
+    private float fuelRefill = 0.5f; //How much per second?
     private float fuelMinimum = 3f; //How many seconds of fuel minimum to take off.
     private float fuelMax = 20f; //What's your maximum fuel?
-    private int fBeginRecharge = 480; //How long in milliseconds before you begin regaining fuel?
+    private int fBeginRecharge = 965; //How long in milliseconds before you begin regaining fuel?
+    private bool fUpgrade = false;
     //Jumpjet handling
     private bool jumpJet = false; //Whether or not you own the JumpJet.
     private float jFuel = 3f; //3 seconds of jumpjet fuel.
@@ -51,23 +58,32 @@ public class gman : MonoBehaviour
     private int jBeginRecharge = 1; //How many milliseconds before you regain fuel? Has to be 1, otherwise the code will begin to just refuel in midflight. I think.
     //Rocket handling.
     private bool rReady = false;
-    private int rFireSpeed = 150; //In milliseconds.
+    private int rFireSpeed = 300; //In milliseconds.
     private int rReload = 1200; // In milliseconds, how long until reload?
     private int rLoaded = 1; //How many rockets are loaded in currently?
-    private int rMax = 4; //How many rockets maximum can you hold?
+    private int rMax = 1; //How many rockets maximum can you hold?
     private int rBeginRecharge = 800; //800 milliseconds until you begin loading new rockets. Ignored if you don't have any left.
     private float rLastReload = 0f; //What was rRecharge the last time it reloaded?
+    private bool rUpgrade = false;
     //Machine gun handling.
-    private int mFireSpeed = 13; //How many milliseconds before firing another shot.
-    private int mReload = 500; //How many milliseconds for a reload?
+    private int mFireSpeed = 80; //How many milliseconds before firing another shot.
+    private int mReload = 2400; //How many milliseconds for a reload?
     private int mMax = 30; //How many rounds in the magazine max?
     private int mLoaded = 30; //How many rounds in the magazine now?
+    private bool mReloadNow = false;
+    private bool mReady = true;
     //Some strings
     private string HealthLabel = "HEALTH";
+    private string AmmunitionLabel = "AMMUNITION";
+    public float miscDBG1;
+    public float miscDBG2;
+    public float miscDBG3;
+
+    private byte win = 4;
 
 
     //Externals
-    public int items
+    public int items //Item counter.
     {
         get { return itemCount; }
         set
@@ -77,9 +93,9 @@ public class gman : MonoBehaviour
         } 
     }
 
-    public int health
+    public int health //Your current HP.
     {
-        get { return playerHP; }
+        get { return (int)playerHP; }
         set
         {
             playerHP = value;
@@ -87,7 +103,7 @@ public class gman : MonoBehaviour
         }
     }
 
-    public bool checkJetpack
+    public bool checkJetpack //Checks the current jetpack fuel, and turns on or off the drain.
     {
         get { 
             if ((jetPackActive == true && playerFuel < 0) || (jetPackActive == false && playerFuel < fuelMinimum)) { jetPackActive = false; return false; }
@@ -102,7 +118,65 @@ public class gman : MonoBehaviour
     {
         get
         {
-            if (rLoaded > 0) { rLoaded = rLoaded - 1; rRecharge = 0; return true; } else { return false; }
+            if (rLoaded > 0 && rReady == true) { rLoaded = rLoaded - 1; rRecharge = 0; rReady = false; return true; } else { return false; }
+        }
+    }
+
+    public bool fireBullet
+    {
+        get
+        {
+            if (mLoaded > 0 && mReady == true) { mLoaded = mLoaded - 1; mRecharge = 0; mReady = false;} else { return false; } //Not returning if true, not yet.
+            if (mLoaded == 0) { mReloadNow = true; } //Reload if we literally just ran out of bullets.
+            return true; //And now we return.
+        }
+        set
+        {
+            if (mLoaded > mMax && mReloadNow ==false) {
+                mRecharge = 0f;
+                mLoaded = 0;
+                mReady = false;
+                mReloadNow = true;
+            }
+        }
+    }
+
+    public void giveItem(byte itemType) //Gives the item of choice. 
+    { 
+        switch(itemType)
+        {
+            case 1: // Armor upgrade.
+                if (hUpgrade == false) {
+                    Debug.Log("Armor armed!");
+                    hRecharge = 0f;
+                    playerMaxHP = playerMaxHP * 2;
+                    hUpgrade = true;
+                }
+                break;
+            case 2: // Rocket upgrade.
+                if (rUpgrade == false)
+                {
+                    Debug.Log("Rocket reserve expanded.");
+                    rUpgrade = true;
+                    rMax = rMax + 3;
+                    rRecharge = 0f;
+                }
+                break;
+            case 3: // Jumpjet upgrade.
+                if (jumpJet == false) { Debug.Log("Super mario mode activated!"); jumpJet = true; }
+                break;
+            case 4: // Jetpack upgrade.
+                if (fUpgrade == false) {
+                    Debug.Log("Jetpack ready!");
+                    fRecharge = 0f;
+                    fUpgrade = true;
+                    fuelMax = fuelMax * 3;
+                    fuelRefill = fuelRefill * 2;
+                }
+                break;
+            default:
+                Debug.Log("Something called to give an item, but there's no compatible itemtype.");
+                break;
         }
     }
 
@@ -120,15 +194,30 @@ public class gman : MonoBehaviour
     {
         //Debug.Log("Deltatime currently is:" + Time.deltaTime * 100);
         rRecharge = rRecharge + Time.deltaTime;
+        rLastReload = rLastReload + Time.deltaTime;
         fRecharge = fRecharge + Time.deltaTime;
         jRecharge = jRecharge + Time.deltaTime;
         mRecharge = mRecharge + Time.deltaTime;
+        hRecharge = hRecharge + Time.deltaTime;
         //Debug.Log((float)fBeginRecharge / 1000 + " < " + fRecharge);
 
-        if (((float)fBeginRecharge / 1000) < fRecharge && playerFuel < fuelMax) { playerFuel = playerFuel + Time.deltaTime; } else if (fBeginRecharge > fRecharge && playerFuel > fuelMax) { playerFuel = fuelMax; }
-        if (((float)rBeginRecharge / 1000) < rRecharge && rLoaded < rMax) { rLoaded = rMax; rRecharge = 0; Debug.Log("TEST"); } else if (rBeginRecharge > rRecharge && rLoaded > rMax) { rLoaded = rMax; }
+        if (((float)fBeginRecharge / 1000) < fRecharge && playerFuel < fuelMax) { playerFuel = playerFuel + Time.deltaTime; } else if (fBeginRecharge > fRecharge && playerFuel > fuelMax) { playerFuel = fuelMax; } //Refuel over time after landing.
+        
+        if (((float)playerHPBeginRecharge /1000) < hRecharge && playerHP < playerMaxHP) { playerHP = playerHP + (playerHPRefill * Time.deltaTime); } else if (playerHPBeginRecharge > hRecharge  && playerHP > playerMaxHP) { playerHP = playerMaxHP; } //Horrendous health system
+        
+        //if (((float)rBeginRecharge / 1000) < rRecharge && rLoaded < rMax) { rLoaded = rMax; rRecharge = 0; } else if (rBeginRecharge > rRecharge && rLoaded > rMax) { rLoaded = rMax; } //Reload after a shot. Needs to be rewritten.
+        if (((float)rBeginRecharge / 1000) < rRecharge && rLoaded < rMax) { // Reloads the rockets. Now works properly.
+            if (((float)rReload / 1000) < rLastReload) { rLoaded = rLoaded + 1; rLastReload = 0f; }
+        } else if (rBeginRecharge > rRecharge && rLoaded > rMax) { rLoaded = rMax; }
 
-        if (jetPackActive == true)
+        if (((float)mReload/ 1000) < mRecharge && mReloadNow) { mReady = true; mLoaded = mMax; mReloadNow = false; } //Reloads the machinegun.
+
+
+
+        if (((float)rFireSpeed / 1000) < rRecharge) { rReady = true; } //Ready the rocks for firing
+        if (((float)mFireSpeed / 1000) < mRecharge) { mReady = true; } //Likewise, readies the bull!
+
+        if (jetPackActive == true) //Drain the fuel of the player.
         {
             fRecharge = 0f;
             if (checkJetpack == true) { playerFuel = playerFuel - Time.deltaTime; } else { jetPackActive = false; }
@@ -137,10 +226,55 @@ public class gman : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Box(new Rect(20, 20, 150, 25), "HEALTH:" + playerHP);
+        GUI.Box(new Rect(20, 20, 150, 25), "HEALTH:" + (int)playerHP);
         GUI.Box(new Rect(20, 50, 150, 25), "FUEL:" + playerFuel);
         //GUI.Box(new Rect(20, 90, 150, 25), "JUMPJET:" + jFuel);
-        //GUI.Box(new Rect(20, 120, 150, 25), "MACHINE GUN:" + mLoaded);
-        GUI.Box(new Rect(20, 90, 150, 25), "ROCKETS:" + rLoaded);
+        GUI.Box(new Rect(20, 110, 150, 25), "MACHINE GUN:" + mLoaded + "/" + mMax);
+        GUI.Box(new Rect(20, 80, 150, 25), "ROCKETS:" + rLoaded);
+
+        if (jumpJet == true && hUpgrade == true && rUpgrade == true && fUpgrade == true)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "Congratulations, you win!");
+        } else {
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "You have not yet collected all of the powerups.");
+         }
+
+        //Debug of the day!
+        int DotD = 1080; //DotD Offset
+        GUI.Box(new Rect(DotD, 10, 150, 25), "DEBUG OF THE DAY");
+        int DotDo = 0; //DotD Offset
+        //Rocketpack
+        /*GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Rocketpack");
+        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + fRecharge);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Refill:" + fuelRefill);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Max:" + fuelMax);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 160, 150, 25), "C.Refill:" + (fuelRefill*Time.deltaTime));
+        GUI.Box(new Rect(DotD + (DotDo * 150), 190, 150, 25), "Is Active:" + jetPackActive);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 220, 150, 25), "Min:" + fuelMinimum);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 250, 150, 25), "Recharge:" + fBeginRecharge +"/"+((float)fBeginRecharge/1000));
+        GUI.Box(new Rect(DotD + (DotDo * 150), 280, 150, 25), "Heightcheck:" + miscDBG1);*/
+        //Health
+        /*GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Health handling");
+        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + hRecharge);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Refill:" + playerHPRefill);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Max:" + playerMaxHP);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 160, 150, 25), "Refill Time:" + (hRecharge - ((float)playerHPBeginRecharge / 1000)));
+        GUI.Box(new Rect(DotD + (DotDo * 150), 190, 150, 25), "Recharge:" + playerHPBeginRecharge+"/" + ((float)playerHPBeginRecharge / 1000));
+        GUI.Box(new Rect(DotD + (DotDo * 150), 220, 150, 25), "True Health:" + playerHP);*/
+        //Rockets
+        /*GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Rockets");
+        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + rRecharge);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Refill:" + rBeginRecharge);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Max:" + rMax);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 160, 150, 25), "Argh:" + (((float)rReload) / 1000) + "/" + rLastReload) ;
+        GUI.Box(new Rect(DotD + (DotDo * 150), 190, 150, 25), "Is Ready:" + rReady);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 220, 150, 25), "Last Reload:" + rLastReload);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 250, 150, 25), "Recharge:" + rBeginRecharge + "/" + ((float)rBeginRecharge / 1000));
+        GUI.Box(new Rect(DotD + (DotDo * 150), 280, 150, 25), "Load time:" + rReload + "/" + ((float)rReload / 1000));
+        DotDo = 1;
+        GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Machine Gun");
+        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + mRecharge);
+        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Fire:" + mFireSpeed + "/" + ((float)mFireSpeed));
+        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Reload:" + mReload + "/" + ((float)mReload));*/
     }
 }

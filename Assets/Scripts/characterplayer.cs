@@ -7,9 +7,9 @@ public class characterplayer : MonoBehaviour
     //Speeds.
     public float movementSpeed = 16f; //A little call back, ROBLOXians move at 16 studs a second.
     public float rotationSpeed = 96f; //For now, a slow, but manageable speed. I don't want a cap, I want mouse control in the future. Very important given the verticality of my game.
-    public float jumpSpeed = 8f; //How much velocity to add to our jump height.
-    public float jetpackSpeed = 1.8f;
-    private float speedLimiter = .5f;
+    public float jumpSpeed = 48f; //How much velocity to add to our jump height.
+    public float jetpackSpeed = 1.7f; //How fast the jetpack actually is.
+    private float speedLimiter = .5f; //A speed limiter applied to everything EXCEPT the jetpack.
 
     //States and handling.
     enum currentAction { Default, Jump, Run, Die };
@@ -18,9 +18,17 @@ public class characterplayer : MonoBehaviour
     public float groundDistance = 0.1f; // ... I don't know what this is.
     public LayerMask groundLayer; // Our ground layer.
     //Projectile
+    private bool machineGun = false;
     public GameObject playerProjectile; //The projectile. Has to be installed in the Unity editor, much to my chagrin.
+    public GameObject altProjectile; //The machinegun projectile.
     //Jetpack.
     private bool activeJetpack = false;
+    //Jumpjet
+    private bool airControl = false;
+    private float airMovementX;
+    //private float airMovementY;
+    private float softAltCap = 32f;
+    private float hardAltCap = 128f;
 
     //Horizontal and Vertical inputs. This is a new way to handle that, and explorercam.cs could probably use it, but explorercam.cs is just a generic placeholder.
     private float verticalIn;
@@ -41,32 +49,44 @@ public class characterplayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() 
+    void Update()
     {
         //Intellisense really screwed me over. I'm really considering refactoring verticalInput and horizontalInput to drop INPUT because it kept trying to autocomplete to that instead of my intended Input.GetAxis.
         verticalIn = Input.GetAxis("Vertical") * movementSpeed * speedLimiter; //* Time.deltaTime;
         horizontalIn = Input.GetAxis("Horizontal") * rotationSpeed * speedLimiter; //* Time.deltaTime;
 
         //And here we have the jump command.
-        if(checkGround() && Input.GetKeyDown(KeyCode.Space))
+        if (checkGround() && Input.GetKeyDown(KeyCode.Space))
         {
             rB.AddForce(Vector3.up * (jumpSpeed * speedLimiter), ForceMode.Impulse);
         }
 
-        if (Input.GetMouseButtonDown(0) && Manager.fireRocket == true) //If M1 is pressed, we fire!
+        //Fire either rockets or bullets.
+        if (Input.GetMouseButtonDown(0) && machineGun == false) //If M1 is pressed, we fire!
         {
-            Vector3 offset = new Vector3(transform.right.x * 0.65f, 0.7f, transform.right.z*0.65f);
-            GameObject newProjectile = Instantiate(playerProjectile, transform.position + offset, transform.rotation) as GameObject; //Creates the stinkin' projectile. In the future, it might be best to leave the rest of it as a script in the prefab.
+            if (Manager.fireRocket == true)
+            {
+                Vector3 offset = new Vector3(transform.right.x * 0.65f, 0.7f, transform.right.z * 0.65f);
+                GameObject newProjectile = Instantiate(playerProjectile, transform.position + offset, transform.rotation) as GameObject; //Creates the stinkin' projectile. In the future, it might be best to leave the rest of it as a script in the prefab.
+            }
+        }
+        if (Input.GetMouseButton(0) && machineGun == true)
+        {
+            if (Manager.fireBullet == true)
+            {
+                Vector3 offset = new Vector3(transform.right.x * 0.65f, 0f, transform.right.z * 0.65f);
+                GameObject newProjectile = Instantiate(altProjectile, transform.position + offset, transform.rotation) as GameObject; //Huh... this seems familiar.
+            }
         }
 
-        if (Input.GetKey(KeyCode.Z))
-        {
-            activeJetpack = true;
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            activeJetpack = false;
-        }
+        //Reload the gun.
+        if (machineGun && Input.GetKeyDown(KeyCode.R)) { Manager.fireBullet = true; }
+
+        //Swaps equipment.
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { machineGun = false; Manager.fireBullet = true; }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { machineGun = true; }
+
+        if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == false) { activeJetpack = true; } else if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == true) { activeJetpack = false; }
 
         /*//No longer necessary, in lieu of the new movement system.
         //Being the "smart" guy I am, I get to drop Time.deltaTime from this calculation by doing it sooner.
@@ -75,22 +95,37 @@ public class characterplayer : MonoBehaviour
     }
     void FixedUpdate() // Run at every physics update. AND SUDDENLY IT STOPS WORKING GOD FUCKING DAMN IT. THANK YOU UNITY.
     {
+        if (checkGround() == false && airControl == false) //Disables air control if you're in the air and lack the jumpjet.
+        {
+            verticalIn = airMovementX;
+            horizontalIn = 0;
+        }
+        else
+        {
+            //airMovementY = horizontalIn;
+            airMovementX = verticalIn;
+        }
         //Rotational vector.
         Vector3 rotVec = Vector3.up * horizontalIn;
-        
+
         //Quaternions, my biggest enemy. Applies a angle to the character(?).
         Quaternion angleRot = Quaternion.Euler(rotVec * Time.fixedDeltaTime);
 
         //Moves and rotates the character based on key inputs.
-        rB.MovePosition(transform.position + transform.forward * verticalIn* Time.fixedDeltaTime);
+        rB.MovePosition(transform.position + transform.forward * verticalIn * Time.fixedDeltaTime);
         rB.MoveRotation(rB.rotation * angleRot);
 
         //Handle jetpacking!
         if (activeJetpack == true && Manager.checkJetpack == true)
         {
             Manager.checkJetpack = true;
-            rB.AddForce(Vector3.up * jetpackSpeed * speedLimiter, ForceMode.Impulse);
-        } else { activeJetpack = false; Manager.checkJetpack = false; }
+            airControl = true;
+            rB.AddForce(Vector3.up * jetpackSpeed * speedLimiter * heightCheck(), ForceMode.Impulse);
+        }
+        else
+        {
+            activeJetpack = false; Manager.checkJetpack = false; airControl = false;
+        }
     }
 
     private bool checkGround() // I have no idea what this function is doing.
@@ -103,5 +138,20 @@ public class characterplayer : MonoBehaviour
 
         //Whatever it is, returns a bool... Which, at the current moment, NEVER returns true.
         return state;
+    }
+
+    private float heightCheck() // Just checks the current height and returns how much force should be maintained. Currently disabled.
+    {
+        /*float now = 1f;
+        if (transform.position.y >= softAltCap && transform.position.y <= hardAltCap) {
+            rB.constraints = RigidbodyConstraints.FreezePositionY;
+            //now = now - ((transform.position.y - softAltCap) * (1 / (hardAltCap - softAltCap)) / 2);
+            //Manager.miscDBG1 = now;
+        } else if (transform.position.y > hardAltCap)
+        {
+            now = 0f;
+        }
+        return now;*/
+        return 1f;
     }
 }
