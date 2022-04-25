@@ -33,6 +33,9 @@ public class bulletbehavior : MonoBehaviour
             case "Rocket":
                 Destroy(gameObject);
                 break;
+            case "Character_Enemy":
+                if (finalTime/4 > 0.2f) { finalTime = 0.2f; }
+                break;
 
             default: //Richochet upon hitting something not useful.
                 Vector2 richoangle = new Vector2(Random.value *finalTime- 0.7f, Random.value * -finalTime - 0.7f);

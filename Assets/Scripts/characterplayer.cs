@@ -61,30 +61,23 @@ public class characterplayer : MonoBehaviour
             rB.AddForce(Vector3.up * (jumpSpeed * speedLimiter), ForceMode.Impulse);
         }
 
-        //Fire either rockets or bullets.
-        if (Input.GetMouseButtonDown(0) && machineGun == false) //If M1 is pressed, we fire!
-        {
-            if (Manager.fireRocket == true)
-            {
-                Vector3 offset = new Vector3(transform.right.x * 0.65f, 0.7f, transform.right.z * 0.65f);
-                GameObject newProjectile = Instantiate(playerProjectile, transform.position + offset, transform.rotation) as GameObject; //Creates the stinkin' projectile. In the future, it might be best to leave the rest of it as a script in the prefab.
-            }
-        }
-        if (Input.GetMouseButton(0) && machineGun == true)
+        //Fire either ~rockets or bullets.
+        if (Input.GetMouseButton(0))
         {
             if (Manager.fireBullet == true)
-            {
+            {   
                 Vector3 offset = new Vector3(transform.right.x * 0.65f, 0f, transform.right.z * 0.65f);
                 GameObject newProjectile = Instantiate(altProjectile, transform.position + offset, transform.rotation) as GameObject; //Huh... this seems familiar.
             }
         }
 
         //Reload the gun.
-        if (machineGun && Input.GetKeyDown(KeyCode.R)) { Manager.fireBullet = true; }
-
-        //Swaps equipment.
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { machineGun = false; Manager.fireBullet = true; }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { machineGun = true; }
+        if (Input.GetKeyDown(KeyCode.R)) { Manager.fireBullet = true; }
+        /*For future reference, this is how the reload works:
+         Manager.fireBullet refers to the firing command.
+        When you set it, it SHOULD disable firing with mReloadNow, assuming mLoaded > mMax
+        mLoaded is set to 0, dumping all of the ammunition
+        mReady is set to false, making sure it doesn't activate with ammo.*/
 
         if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == false) { activeJetpack = true; } else if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == true) { activeJetpack = false; }
 

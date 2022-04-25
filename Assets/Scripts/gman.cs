@@ -6,25 +6,27 @@ using UnityEngine;
 /*
 Some stuff about the game:
 Enemy types:
-Recon - Jumpjet - Limited to light machine gun. Warns everyone. Works in tandem with rocketeers. Jumps across small gaps for a surprise attack. Can't fly. Fire in rapid bursts.
-Rocketeer - Increased Fuel - Flies quite often. Immediately takes to the air to try to aerially bombard you if recon spots you. Doesn't check for fuel.
-Blockadesman - Armor - Heavy duty, can even take a rocket to the face. Rather slow though.
-Bombadier - Firepower Upgrade - Fires arcing rockets. Attempts to bombard from their position based on Recon intel. Fires in trios.
-Rocketman - None. - Only rockets. Uses standard AI, with no special gimmicks.
+~Recon - Jumpjet - Limited to light machine gun. Warns everyone. Works in tandem with rocketeers. Jumps across small gaps for a surprise attack. Can't fly. Fire in rapid bursts.
+~Rocketeer - Increased Fuel - Flies quite often. Immediately takes to the air to try to aerially bombard you if recon spots you. Doesn't check for fuel.
+~Blockadesman - Armor - Heavy duty, can even take a rocket to the face. Rather slow though.
+~Bombadier - Firepower Upgrade - Fires arcing rockets. Attempts to bombard from their position based on Recon intel. Fires in trios.
+~Rocketman - None. - Only rockets. Uses standard AI, with no special gimmicks.
 Light - None. - Only machine gun. Uses standard AI, with no special gimmicks.
-Medium - None. - Both rockets and machine gun. Uses standard AI, with no special gimmicks.
+~Medium - None. - Both rockets and machine gun. Uses standard AI, with no special gimmicks.
 
 Powerup descriptions:
-Jumpjet - Air control, increased speed in air, spends once and must recharge.
+~Jumpjet - Air control, increased speed in air, spends once and must recharge.
 Increased Fuel - Triples your fuel and doubles the recharge time.
 Armor - Doubles your health. Lets you sustain all but direct hits.
-Firepower Upgrade - Lets you fire 4 rockets in rapid succession, before needing to do a lengthy reload.
+~Firepower Upgrade - Lets you fire 4 rockets in rapid succession, before needing to do a lengthy reload.
 
 Refills by current defaults:
 Jumpjet:3.75 seconds.
 Jetpack:40 seconds 
 Jetpack(INCREASED):60 seconds.
 Firepower:12 seconds.
+
+Had to rewrite large sections of this to simplify things. Things with ~ are scrapped.
  */
 public class gman : MonoBehaviour
 {
@@ -35,12 +37,12 @@ public class gman : MonoBehaviour
     private int playerHPBeginRecharge = 3000; //How many milliseconds before you begin to recharge health?
     private float playerHPRefill = 3f; //How much health do you regain per second?'
     private bool hUpgrade = false;
+
     //Recharge delatimers
-    private float rRecharge = 0f; //How much deltatime has it been since Rocket usage.
-    private float jRecharge = 0f; //How much deltatime has it been since Jumpjet usage.
     private float fRecharge = 0f; //How much deltatime has it been since jetpack(Flying) usage.
     private float mRecharge = 0f; //How much deltatime has it been since Machinegun usage.
     private float hRecharge = 0f; //How long has it been since you took damage?
+
     //Jetpack handling.
     private bool jetPackActive = false; //Whether or not the jetpack is active at this current moment.
     private float playerFuel = 20f; //Done in seconds.
@@ -49,22 +51,7 @@ public class gman : MonoBehaviour
     private float fuelMax = 20f; //What's your maximum fuel?
     private int fBeginRecharge = 965; //How long in milliseconds before you begin regaining fuel?
     private bool fUpgrade = false;
-    //Jumpjet handling
-    private bool jumpJet = false; //Whether or not you own the JumpJet.
-    private float jFuel = 3f; //3 seconds of jumpjet fuel.
-    private float jFuelRefill = .8f; //How fast the refill should be per second.
-    private float jFuelMinimum = 0f; //How much jFuel do you need?
-    private float jFuelMax = 3f; //What's the maximum?
-    private int jBeginRecharge = 1; //How many milliseconds before you regain fuel? Has to be 1, otherwise the code will begin to just refuel in midflight. I think.
-    //Rocket handling.
-    private bool rReady = false;
-    private int rFireSpeed = 300; //In milliseconds.
-    private int rReload = 1200; // In milliseconds, how long until reload?
-    private int rLoaded = 1; //How many rockets are loaded in currently?
-    private int rMax = 1; //How many rockets maximum can you hold?
-    private int rBeginRecharge = 800; //800 milliseconds until you begin loading new rockets. Ignored if you don't have any left.
-    private float rLastReload = 0f; //What was rRecharge the last time it reloaded?
-    private bool rUpgrade = false;
+
     //Machine gun handling.
     private int mFireSpeed = 80; //How many milliseconds before firing another shot.
     private int mReload = 2400; //How many milliseconds for a reload?
@@ -72,6 +59,7 @@ public class gman : MonoBehaviour
     private int mLoaded = 30; //How many rounds in the magazine now?
     private bool mReloadNow = false;
     private bool mReady = true;
+
     //Some strings
     private string HealthLabel = "HEALTH";
     private string AmmunitionLabel = "AMMUNITION";
@@ -114,14 +102,6 @@ public class gman : MonoBehaviour
         }
     }
 
-    public bool fireRocket
-    {
-        get
-        {
-            if (rLoaded > 0 && rReady == true) { rLoaded = rLoaded - 1; rRecharge = 0; rReady = false; return true; } else { return false; }
-        }
-    }
-
     public bool fireBullet
     {
         get
@@ -132,7 +112,7 @@ public class gman : MonoBehaviour
         }
         set
         {
-            if (mLoaded > mMax && mReloadNow ==false) {
+            if (mLoaded < mMax && mReloadNow == false) {
                 mRecharge = 0f;
                 mLoaded = 0;
                 mReady = false;
@@ -154,17 +134,8 @@ public class gman : MonoBehaviour
                 }
                 break;
             case 2: // Rocket upgrade.
-                if (rUpgrade == false)
-                {
-                    Debug.Log("Rocket reserve expanded.");
-                    rUpgrade = true;
-                    rMax = rMax + 3;
-                    rRecharge = 0f;
-                }
                 break;
             case 3: // Jumpjet upgrade.
-                if (jumpJet == false) { Debug.Log("Super mario mode activated!"); jumpJet = true; }
-                break;
             case 4: // Jetpack upgrade.
                 if (fUpgrade == false) {
                     Debug.Log("Jetpack ready!");
@@ -193,10 +164,7 @@ public class gman : MonoBehaviour
     void Update()
     {
         //Debug.Log("Deltatime currently is:" + Time.deltaTime * 100);
-        rRecharge = rRecharge + Time.deltaTime;
-        rLastReload = rLastReload + Time.deltaTime;
         fRecharge = fRecharge + Time.deltaTime;
-        jRecharge = jRecharge + Time.deltaTime;
         mRecharge = mRecharge + Time.deltaTime;
         hRecharge = hRecharge + Time.deltaTime;
         //Debug.Log((float)fBeginRecharge / 1000 + " < " + fRecharge);
@@ -204,17 +172,9 @@ public class gman : MonoBehaviour
         if (((float)fBeginRecharge / 1000) < fRecharge && playerFuel < fuelMax) { playerFuel = playerFuel + Time.deltaTime; } else if (fBeginRecharge > fRecharge && playerFuel > fuelMax) { playerFuel = fuelMax; } //Refuel over time after landing.
         
         if (((float)playerHPBeginRecharge /1000) < hRecharge && playerHP < playerMaxHP) { playerHP = playerHP + (playerHPRefill * Time.deltaTime); } else if (playerHPBeginRecharge > hRecharge  && playerHP > playerMaxHP) { playerHP = playerMaxHP; } //Horrendous health system
-        
-        //if (((float)rBeginRecharge / 1000) < rRecharge && rLoaded < rMax) { rLoaded = rMax; rRecharge = 0; } else if (rBeginRecharge > rRecharge && rLoaded > rMax) { rLoaded = rMax; } //Reload after a shot. Needs to be rewritten.
-        if (((float)rBeginRecharge / 1000) < rRecharge && rLoaded < rMax) { // Reloads the rockets. Now works properly.
-            if (((float)rReload / 1000) < rLastReload) { rLoaded = rLoaded + 1; rLastReload = 0f; }
-        } else if (rBeginRecharge > rRecharge && rLoaded > rMax) { rLoaded = rMax; }
 
         if (((float)mReload/ 1000) < mRecharge && mReloadNow) { mReady = true; mLoaded = mMax; mReloadNow = false; } //Reloads the machinegun.
 
-
-
-        if (((float)rFireSpeed / 1000) < rRecharge) { rReady = true; } //Ready the rocks for firing
         if (((float)mFireSpeed / 1000) < mRecharge) { mReady = true; } //Likewise, readies the bull!
 
         if (jetPackActive == true) //Drain the fuel of the player.
@@ -229,10 +189,10 @@ public class gman : MonoBehaviour
         GUI.Box(new Rect(20, 20, 150, 25), "HEALTH:" + (int)playerHP);
         GUI.Box(new Rect(20, 50, 150, 25), "FUEL:" + playerFuel);
         //GUI.Box(new Rect(20, 90, 150, 25), "JUMPJET:" + jFuel);
-        GUI.Box(new Rect(20, 110, 150, 25), "MACHINE GUN:" + mLoaded + "/" + mMax);
-        GUI.Box(new Rect(20, 80, 150, 25), "ROCKETS:" + rLoaded);
+        GUI.Box(new Rect(20, 80, 150, 25), "MACHINE GUN:" + mLoaded + "/" + mMax);
+        //GUI.Box(new Rect(20, 80, 150, 25), "ROCKETS:" + rLoaded);
 
-        if (jumpJet == true && hUpgrade == true && rUpgrade == true && fUpgrade == true)
+        if (hUpgrade == true && fUpgrade == true)
         {
             GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "Congratulations, you win!");
         } else {
