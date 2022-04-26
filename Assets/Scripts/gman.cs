@@ -32,11 +32,11 @@ public class gman : MonoBehaviour
 {
     //Internals
     private int itemCount = 0; //Generic value.
-    private float playerHP = 1; //Generic value.
+    private float playerHP = 100; //Generic value.
     private int playerMaxHP = 100; //Generic value.
     private int playerHPBeginRecharge = 3000; //How many milliseconds before you begin to recharge health?
     private float playerHPRefill = 3f; //How much health do you regain per second?'
-    private bool hUpgrade = false;
+    private bool hUpgrade = false; // Health upgrade. Didn't fit in any other category.
 
     //Recharge delatimers
     private float fRecharge = 0f; //How much deltatime has it been since jetpack(Flying) usage.
@@ -87,6 +87,7 @@ public class gman : MonoBehaviour
         set
         {
             playerHP = value;
+            hRecharge = 0.0f;
             Debug.LogFormat("HP is at: {0}", playerHP);
         }
     }
@@ -136,6 +137,7 @@ public class gman : MonoBehaviour
             case 2: // Rocket upgrade.
                 break;
             case 3: // Jumpjet upgrade.
+                break;
             case 4: // Jetpack upgrade.
                 if (fUpgrade == false) {
                     Debug.Log("Jetpack ready!");

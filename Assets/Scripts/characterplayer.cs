@@ -18,7 +18,7 @@ public class characterplayer : MonoBehaviour
     public float groundDistance = 0.1f; // ... I don't know what this is.
     public LayerMask groundLayer; // Our ground layer.
     //Projectile
-    private bool machineGun = false;
+    //private bool machineGun = false;
     public GameObject playerProjectile; //The projectile. Has to be installed in the Unity editor, much to my chagrin.
     public GameObject altProjectile; //The machinegun projectile.
     //Jetpack.
