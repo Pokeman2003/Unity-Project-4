@@ -7,6 +7,7 @@ UnityEngine.AnimationCurve::Internal_Equals
 UnityEngine.AnimationCurve::Internal_Create
 UnityEngine.AnimationCurve::Internal_Destroy
 UnityEngine.Application::Quit
+UnityEngine.AsyncOperation::InternalDestroy
 UnityEngine.Camera::GetAllCamerasCount
 UnityEngine.Camera::GetAllCamerasImpl
 UnityEngine.Camera::get_cullingMask
@@ -37,11 +38,13 @@ UnityEngine.Event::Internal_Create
 UnityEngine.Event::get_commandName
 UnityEngine.Event::Internal_Destroy
 UnityEngine.Event::Internal_SetNativeEvent
+UnityEngine.Event::Internal_Use
 UnityEngine.Event::get_mousePosition_Injected
 UnityEngine.Event::set_displayIndex
 UnityEngine.Event::get_modifiers
 UnityEngine.Event::get_type
 UnityEngine.Event::get_keyCode
+UnityEngine.Event::get_pointerType
 UnityEngine.Experimental.Rendering.BuiltinRuntimeReflectionSystem::BuiltinUpdate
 UnityEngine.Experimental.Rendering.GraphicsFormatUtility::CanDecompressFormat
 UnityEngine.Experimental.Rendering.GraphicsFormatUtility::IsCompressedTextureFormat
@@ -61,6 +64,9 @@ UnityEngine.GameObject::get_transform
 UnityEngine.Gradient::Internal_Equals
 UnityEngine.Gradient::Init
 UnityEngine.Gradient::Cleanup
+UnityEngine.GUI::HasMouseControl
+UnityEngine.GUI::GrabMouseControl
+UnityEngine.GUI::ReleaseMouseControl
 UnityEngine.GUI::set_changed
 UnityEngine.GUIClip::get_visibleRect_Injected
 UnityEngine.GUILayoutUtility::Internal_GetWindowRect_Injected
@@ -185,6 +191,9 @@ UnityEngine.Rigidbody::MoveRotation_Injected
 UnityEngine.Rigidbody::get_rotation_Injected
 UnityEngine.Rigidbody::set_isKinematic
 UnityEngine.Rigidbody::set_velocity_Injected
+UnityEngine.SceneManagement.SceneManager::get_sceneCount
+UnityEngine.SceneManagement.SceneManager::GetSceneAt_Injected
+UnityEngine.SceneManagement.SceneManagerAPIInternal::LoadSceneAsyncNameIndexInternal_Injected
 UnityEngine.Screen::get_height
 UnityEngine.Screen::get_width
 UnityEngine.ScriptableObject::CreateScriptableObject
@@ -199,6 +208,7 @@ UnityEngine.Texture2DArray::Internal_CreateImpl
 UnityEngine.Texture3D::Internal_CreateImpl
 UnityEngine.Time::get_deltaTime
 UnityEngine.Time::get_fixedDeltaTime
+UnityEngine.Time::set_timeScale
 UnityEngine.Transform::get_childCount
 UnityEngine.Transform::Internal_LookAt_Injected
 UnityEngine.Transform::TransformPoint_Injected
