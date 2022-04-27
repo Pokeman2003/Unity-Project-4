@@ -16,6 +16,22 @@ void RegisterAllStrippedInternalCalls()
 
 	//End Registrations for type : Unity.Jobs.JobHandle
 
+	//Start Registrations for type : UnityEngine.AI.NavMeshAgent
+
+		//System.Boolean UnityEngine.AI.NavMeshAgent::get_pathPending()
+		void Register_UnityEngine_AI_NavMeshAgent_get_pathPending();
+		Register_UnityEngine_AI_NavMeshAgent_get_pathPending();
+
+		//System.Single UnityEngine.AI.NavMeshAgent::get_remainingDistance()
+		void Register_UnityEngine_AI_NavMeshAgent_get_remainingDistance();
+		Register_UnityEngine_AI_NavMeshAgent_get_remainingDistance();
+
+		//System.Void UnityEngine.AI.NavMeshAgent::set_destination_Injected(UnityEngine.Vector3&)
+		void Register_UnityEngine_AI_NavMeshAgent_set_destination_Injected();
+		Register_UnityEngine_AI_NavMeshAgent_set_destination_Injected();
+
+	//End Registrations for type : UnityEngine.AI.NavMeshAgent
+
 	//Start Registrations for type : UnityEngine.AnimationCurve
 
 		//System.Boolean UnityEngine.AnimationCurve::Internal_Equals(System.IntPtr)
@@ -31,14 +47,6 @@ void RegisterAllStrippedInternalCalls()
 		Register_UnityEngine_AnimationCurve_Internal_Destroy();
 
 	//End Registrations for type : UnityEngine.AnimationCurve
-
-	//Start Registrations for type : UnityEngine.Animations.AnimationLayerMixerPlayable
-
-		//System.Void UnityEngine.Animations.AnimationLayerMixerPlayable::SetSingleLayerOptimizationInternal(UnityEngine.Playables.PlayableHandle&,System.Boolean)
-		void Register_UnityEngine_Animations_AnimationLayerMixerPlayable_SetSingleLayerOptimizationInternal();
-		Register_UnityEngine_Animations_AnimationLayerMixerPlayable_SetSingleLayerOptimizationInternal();
-
-	//End Registrations for type : UnityEngine.Animations.AnimationLayerMixerPlayable
 
 	//Start Registrations for type : UnityEngine.Application
 
@@ -340,6 +348,14 @@ void RegisterAllStrippedInternalCalls()
 
 	//End Registrations for type : UnityEngine.GUI
 
+	//Start Registrations for type : UnityEngine.GUIClip
+
+		//System.Void UnityEngine.GUIClip::get_visibleRect_Injected(UnityEngine.Rect&)
+		void Register_UnityEngine_GUIClip_get_visibleRect_Injected();
+		Register_UnityEngine_GUIClip_get_visibleRect_Injected();
+
+	//End Registrations for type : UnityEngine.GUIClip
+
 	//Start Registrations for type : UnityEngine.GUILayoutUtility
 
 		//System.Void UnityEngine.GUILayoutUtility::Internal_GetWindowRect_Injected(System.Int32,UnityEngine.Rect&)
@@ -353,6 +369,10 @@ void RegisterAllStrippedInternalCalls()
 	//End Registrations for type : UnityEngine.GUILayoutUtility
 
 	//Start Registrations for type : UnityEngine.GUIStyle
+
+		//System.Boolean UnityEngine.GUIStyle::IsTooltipActive(System.String)
+		void Register_UnityEngine_GUIStyle_IsTooltipActive();
+		Register_UnityEngine_GUIStyle_IsTooltipActive();
 
 		//System.Boolean UnityEngine.GUIStyle::get_stretchHeight()
 		void Register_UnityEngine_GUIStyle_get_stretchHeight();
@@ -401,6 +421,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Void UnityEngine.GUIStyle::SetDefaultFont(UnityEngine.Font)
 		void Register_UnityEngine_GUIStyle_SetDefaultFont();
 		Register_UnityEngine_GUIStyle_SetDefaultFont();
+
+		//System.Void UnityEngine.GUIStyle::SetMouseTooltip_Injected(System.String,UnityEngine.Rect&)
+		void Register_UnityEngine_GUIStyle_SetMouseTooltip_Injected();
+		Register_UnityEngine_GUIStyle_SetMouseTooltip_Injected();
 
 		//System.Void UnityEngine.GUIStyle::set_rawName(System.String)
 		void Register_UnityEngine_GUIStyle_set_rawName();
@@ -728,18 +752,6 @@ void RegisterAllStrippedInternalCalls()
 
 	//End Registrations for type : UnityEngine.PhysicsScene
 
-	//Start Registrations for type : UnityEngine.Playables.PlayableHandle
-
-		//System.Boolean UnityEngine.Playables.PlayableHandle::IsValid_Injected(UnityEngine.Playables.PlayableHandle&)
-		void Register_UnityEngine_Playables_PlayableHandle_IsValid_Injected();
-		Register_UnityEngine_Playables_PlayableHandle_IsValid_Injected();
-
-		//System.Type UnityEngine.Playables.PlayableHandle::GetPlayableType_Injected(UnityEngine.Playables.PlayableHandle&)
-		void Register_UnityEngine_Playables_PlayableHandle_GetPlayableType_Injected();
-		Register_UnityEngine_Playables_PlayableHandle_GetPlayableType_Injected();
-
-	//End Registrations for type : UnityEngine.Playables.PlayableHandle
-
 	//Start Registrations for type : UnityEngine.PlayerConnectionInternal
 
 		//System.Boolean UnityEngine.PlayerConnectionInternal::IsConnected()
@@ -799,6 +811,18 @@ void RegisterAllStrippedInternalCalls()
 		Register_UnityEngine_Quaternion_Inverse_Injected();
 
 	//End Registrations for type : UnityEngine.Quaternion
+
+	//Start Registrations for type : UnityEngine.Random
+
+		//System.Int32 UnityEngine.Random::RandomRangeInt(System.Int32,System.Int32)
+		void Register_UnityEngine_Random_RandomRangeInt();
+		Register_UnityEngine_Random_RandomRangeInt();
+
+		//System.Single UnityEngine.Random::get_value()
+		void Register_UnityEngine_Random_get_value();
+		Register_UnityEngine_Random_get_value();
+
+	//End Registrations for type : UnityEngine.Random
 
 	//Start Registrations for type : UnityEngine.RectOffset
 
@@ -909,6 +933,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Void UnityEngine.Rigidbody::get_rotation_Injected(UnityEngine.Quaternion&)
 		void Register_UnityEngine_Rigidbody_get_rotation_Injected();
 		Register_UnityEngine_Rigidbody_get_rotation_Injected();
+
+		//System.Void UnityEngine.Rigidbody::set_isKinematic(System.Boolean)
+		void Register_UnityEngine_Rigidbody_set_isKinematic();
+		Register_UnityEngine_Rigidbody_set_isKinematic();
 
 		//System.Void UnityEngine.Rigidbody::set_velocity_Injected(UnityEngine.Vector3&)
 		void Register_UnityEngine_Rigidbody_set_velocity_Injected();

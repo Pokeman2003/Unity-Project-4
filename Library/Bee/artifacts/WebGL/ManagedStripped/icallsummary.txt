@@ -1,9 +1,11 @@
 Unity.Collections.LowLevel.Unsafe.UnsafeUtility::Free
 Unity.Jobs.JobHandle::ScheduleBatchedJobs
+UnityEngine.AI.NavMeshAgent::get_pathPending
+UnityEngine.AI.NavMeshAgent::get_remainingDistance
+UnityEngine.AI.NavMeshAgent::set_destination_Injected
 UnityEngine.AnimationCurve::Internal_Equals
 UnityEngine.AnimationCurve::Internal_Create
 UnityEngine.AnimationCurve::Internal_Destroy
-UnityEngine.Animations.AnimationLayerMixerPlayable::SetSingleLayerOptimizationInternal
 UnityEngine.Application::Quit
 UnityEngine.Camera::GetAllCamerasCount
 UnityEngine.Camera::GetAllCamerasImpl
@@ -60,8 +62,10 @@ UnityEngine.Gradient::Internal_Equals
 UnityEngine.Gradient::Init
 UnityEngine.Gradient::Cleanup
 UnityEngine.GUI::set_changed
+UnityEngine.GUIClip::get_visibleRect_Injected
 UnityEngine.GUILayoutUtility::Internal_GetWindowRect_Injected
 UnityEngine.GUILayoutUtility::Internal_MoveWindow_Injected
+UnityEngine.GUIStyle::IsTooltipActive
 UnityEngine.GUIStyle::get_stretchHeight
 UnityEngine.GUIStyle::get_stretchWidth
 UnityEngine.GUIStyle::GetRectOffsetPtr
@@ -74,6 +78,7 @@ UnityEngine.GUIStyle::Internal_Destroy
 UnityEngine.GUIStyle::Internal_Draw2_Injected
 UnityEngine.GUIStyle::Internal_Draw_Injected
 UnityEngine.GUIStyle::SetDefaultFont
+UnityEngine.GUIStyle::SetMouseTooltip_Injected
 UnityEngine.GUIStyle::set_rawName
 UnityEngine.GUIStyle::set_stretchHeight
 UnityEngine.GUIStyleState::Init
@@ -141,8 +146,6 @@ UnityEngine.Physics::Internal_RaycastAll_Injected
 UnityEngine.PhysicsScene::Internal_RaycastTest_Injected
 UnityEngine.PhysicsScene::Internal_Raycast_Injected
 UnityEngine.PhysicsScene::Internal_RaycastNonAlloc_Injected
-UnityEngine.Playables.PlayableHandle::IsValid_Injected
-UnityEngine.Playables.PlayableHandle::GetPlayableType_Injected
 UnityEngine.PlayerConnectionInternal::IsConnected
 UnityEngine.PlayerConnectionInternal::TrySendMessage
 UnityEngine.PlayerConnectionInternal::DisconnectAll
@@ -155,6 +158,8 @@ UnityEngine.QualitySettings::get_activeColorSpace
 UnityEngine.Quaternion::Internal_FromEulerRad_Injected
 UnityEngine.Quaternion::Internal_ToEulerRad_Injected
 UnityEngine.Quaternion::Inverse_Injected
+UnityEngine.Random::RandomRangeInt
+UnityEngine.Random::get_value
 UnityEngine.RectOffset::get_bottom
 UnityEngine.RectOffset::get_horizontal
 UnityEngine.RectOffset::get_left
@@ -178,6 +183,7 @@ UnityEngine.Rigidbody::AddForce_Injected
 UnityEngine.Rigidbody::MovePosition_Injected
 UnityEngine.Rigidbody::MoveRotation_Injected
 UnityEngine.Rigidbody::get_rotation_Injected
+UnityEngine.Rigidbody::set_isKinematic
 UnityEngine.Rigidbody::set_velocity_Injected
 UnityEngine.Screen::get_height
 UnityEngine.Screen::get_width

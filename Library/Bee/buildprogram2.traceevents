@@ -1,17 +1,18 @@
 { "pid": "BuildProgram", "ph":"M", "name": "process_name", "args": {"name": "BuildProgram"} },
 { "pid": "BuildProgram", "ph":"M", "name": "process_sort_index", "args": {"sort_index": -1} },
 { "pid": "BuildProgram", "tid": 1, "ph":"M", "name": "thread_name", "args": {"name": ""} },
-{ "pid": "BuildProgram", "tid": 1,"ts": 60770894129.2,"dur": 316097.8, "ph":"X", "name": "BuildProgram"},
-{ "pid": "BuildProgram", "tid": 1,"ts": 60770894287.5,"dur": 49809.8, "ph":"X", "name": "BuildProgramContextCCtor"},
-{ "pid": "BuildProgram", "tid": 1,"ts": 60771071280.4,"dur": 78077.3, "ph":"X", "name": "SetupSpecificConfigImpl GameAssembly", "args": { "detail": "master_WebGL_wasm"}
+{ "pid": "BuildProgram", "tid": 1,"ts": 54434993111.3,"dur": 346509.8, "ph":"X", "name": "BuildProgram"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 54434993287.8,"dur": 54994.3, "ph":"X", "name": "BuildProgramContextCCtor"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435186449.8,"dur": 83670, "ph":"X", "name": "SetupSpecificConfigImpl GameAssembly", "args": { "detail": "master_WebGL_wasm"}
 },
-{ "pid": "BuildProgram", "tid": 1,"ts": 60771077347.1,"dur": 64083.6, "ph":"X", "name": "SetupSpecificConfigImpl il2cpp", "args": { "detail": "master_WebGL_wasm"}
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435192684.6,"dur": 68683.4, "ph":"X", "name": "SetupSpecificConfigImpl il2cpp", "args": { "detail": "master_WebGL_wasm"}
 },
-{ "pid": "BuildProgram", "tid": 1,"ts": 60771078033.8,"dur": 37877.5, "ph":"X", "name": "SetupSpecificConfigImpl bdwgc", "args": { "detail": "master_WebGL_wasm"}
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435193407.2,"dur": 41167.2, "ph":"X", "name": "SetupSpecificConfigImpl bdwgc", "args": { "detail": "master_WebGL_wasm"}
 },
-{ "pid": "BuildProgram", "tid": 1,"ts": 60771115936.2,"dur": 2199.4, "ph":"X", "name": "SetupSpecificConfigImpl zlib", "args": { "detail": "master_WebGL_wasm"}
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435234602.5,"dur": 2404, "ph":"X", "name": "SetupSpecificConfigImpl zlib", "args": { "detail": "master_WebGL_wasm"}
 },
-{ "pid": "BuildProgram", "tid": 1,"ts": 60771158908.5,"dur": 8745.9, "ph":"X", "name": "SetupSpecificConfigImpl build", "args": { "detail": "debug_WebGL_wasm"}
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435280663.8,"dur": 9586.1, "ph":"X", "name": "SetupSpecificConfigImpl build", "args": { "detail": "debug_WebGL_wasm"}
 },
-{ "pid": "BuildProgram", "tid": 1,"ts": 60771182964.3,"dur": 27261.5, "ph":"X", "name": "Backend.Write"},
-{ "pid": "BuildProgram", "tid": 1,"ts": 60771183523.9,"dur": 14815.8, "ph":"X", "name": "JsonToString"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435306830,"dur": 380, "ph":"X", "name": "OutputData.Write"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435307210.3,"dur": 32409.7, "ph":"X", "name": "Backend.Write"},
+{ "pid": "BuildProgram", "tid": 1,"ts": 54435307932.4,"dur": 16992, "ph":"X", "name": "JsonToString"},

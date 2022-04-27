@@ -9,7 +9,8 @@ Controls happen to be listed on the game page itself.
 
 [Shoot build.](http://pokeman2003.github.io/Unity-Project-4/shootbuild/index.html)
  Note:The shoot build lacks win/loss conditions because I forgot to implement them.
-## Chapters 9-???
+## Chapters 9-10+YT
+[AI Movement build.](https://pokeman2003.github.io/Unity-Project-4/movebuild/index.html)
 
 ## Check out our sister game!
-This game was developed in tandem with a similar, but slightly more advanced game. [Check it out here!](https://github.com/Pokeman2003/Unity-Project-5)
+This game was developed in tandem with a similar, but slightly more advanced game. [Check it out here!](https://github.com/Pokeman2003/Unity-Project-5) This is also the precursor to a slightly more simplified secondary game. [Here's that one for your pleasure.](https://github.com/Pokeman2003/Unity-Project-6)
