@@ -49,8 +49,12 @@ public class characterenemy : MonoBehaviour
 
         if (navAgent.remainingDistance < 0.4f && !navAgent.pathPending && !chaseMode)
         {
-            Debug.Log("Onwards to the next node.");
+            //Debug.Log("Onwards to the next node.");
+            //Debug.Log("Node info:" + patrolTime + "," + patrolEnd + "," + patrolIndex + "," + nodeCount);
             nextPatrolPoint();
+        } else if (chaseMode)
+        {
+            navAgent.destination = target.position;
         }
     }
 
@@ -69,7 +73,6 @@ public class characterenemy : MonoBehaviour
         switch (item.name) {
             case "Character_Player":
                 Debug.Log("Player has entered the zone!");
-                navAgent.destination = target.position;
                 patrolTime = 0.0f;
                 chaseMode = true;
                 break;
@@ -94,6 +97,7 @@ public class characterenemy : MonoBehaviour
             case "Character_Player":
                 Debug.Log("Player has exited the zone!");
                 chaseMode = false;
+                patrolTime = 0.0f;
                 break;
             case "Rocket":
                 Debug.Log("Relaxing, the rocket has left my range.");
@@ -114,6 +118,7 @@ public class characterenemy : MonoBehaviour
             case "Character_Player":
                 Debug.Log("GOTCHA!");
                 Manager.health = Manager.health - 15;
+                patrolTime = 0.0f;
                 break;
             case "Explosion":
                 Debug.Log("I'm DEAD!");
@@ -137,7 +142,7 @@ public class characterenemy : MonoBehaviour
         {
             Debug.Log("Patrol: " + child);
             patrolList.Add(child);
-            Debug.Log("Listing: " + patrolList[patrolRouteCount]);
+            //Debug.Log("Listing: " + patrolList[patrolRouteCount]);
             patrolRouteCount += (ushort)1;
         }
         Debug.Log("Patrol count:" + patrolRouteCount);
@@ -145,18 +150,17 @@ public class characterenemy : MonoBehaviour
 
     void initNewPatrol() //Picks a patrol and goes with it.
     {
-        int patrolCount = (int)patrolRouteCount * 2 + 1;
-        Debug.Log("Registering new patrol.");
+        int patrolCount = (int)patrolRouteCount * 2;
+        //Debug.Log("Registering new patrol.");
         patrolLocations = new List<Transform>();
         nodeCount = 0;
         patrolEnd = Random.Range(6, 720);
         //patrolEnd = 0;
         int patrolCast = Random.Range(1, patrolCount);
-        if ((patrolCast%2) == 0) { patrolReverse = true; patrolCast = patrolCast / 2;  } else { patrolReverse = false; }
-        patrolCast = patrolCast - 1;
+        if ((patrolCast%2) == 0) { patrolReverse = true; patrolCast = patrolCast / 2;  } else { patrolReverse = false; patrolCast = Mathf.Abs(patrolCast - patrolRouteCount); }
         foreach (Transform child in patrolList[patrolCast])
         {
-            Debug.Log("Node: " + child);
+            //Debug.Log("Node: " + child);
             patrolLocations.Add(child);
             nodeCount += (ushort)1;
         }
@@ -176,6 +180,6 @@ public class characterenemy : MonoBehaviour
         navAgent.destination = patrolLocations[internalPatrolIndex].position;
         patrolIndex += 1;
         if (patrolIndex > nodeCount - 1) { patrolIndex = 0; }
-        Debug.Log("Node: " + patrolIndex + "," + nodeCount + "," + internalPatrolIndex + "," + patrolLocations[internalPatrolIndex] + "," + patrolLocations[internalPatrolIndex].position);
+        //Debug.Log("Node: " + patrolIndex + "," + nodeCount + "," + internalPatrolIndex + "," + patrolLocations[internalPatrolIndex] + "," + patrolLocations[internalPatrolIndex].position);
     }
 }

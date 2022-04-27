@@ -37,6 +37,7 @@ public class gman : MonoBehaviour
     private int playerHPBeginRecharge = 3000; //How many milliseconds before you begin to recharge health?
     private float playerHPRefill = 3f; //How much health do you regain per second?'
     private bool hUpgrade = false; // Health upgrade. Didn't fit in any other category.
+    private bool death = false; //Whether or not you're dead.
 
     //Recharge delatimers
     private float fRecharge = 0f; //How much deltatime has it been since jetpack(Flying) usage.
@@ -155,14 +156,10 @@ public class gman : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
-    /*void Update()
-    {
-        
-    }*/
     void Update()
     {
         //Debug.Log("Deltatime currently is:" + Time.deltaTime * 100);
@@ -184,6 +181,12 @@ public class gman : MonoBehaviour
             fRecharge = 0f;
             if (checkJetpack == true) { playerFuel = playerFuel - Time.deltaTime; } else { jetPackActive = false; }
         }
+
+        if (playerHP <= 0) // Stop the game if you've run out of health.
+        {
+            playerHP = 0;
+            death = true;
+        }
     }
 
     void OnGUI()
@@ -197,46 +200,18 @@ public class gman : MonoBehaviour
         if (hUpgrade == true && fUpgrade == true)
         {
             GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "Congratulations, you win!");
+            Time.timeScale = 0.0f;
         } else {
             GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "You have not yet collected all of the powerups.");
          }
 
-        //Debug of the day!
-        int DotD = 1080; //DotD Offset
-        GUI.Box(new Rect(DotD, 10, 150, 25), "DEBUG OF THE DAY");
-        int DotDo = 0; //DotD Offset
-        //Rocketpack
-        /*GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Rocketpack");
-        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + fRecharge);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Refill:" + fuelRefill);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Max:" + fuelMax);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 160, 150, 25), "C.Refill:" + (fuelRefill*Time.deltaTime));
-        GUI.Box(new Rect(DotD + (DotDo * 150), 190, 150, 25), "Is Active:" + jetPackActive);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 220, 150, 25), "Min:" + fuelMinimum);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 250, 150, 25), "Recharge:" + fBeginRecharge +"/"+((float)fBeginRecharge/1000));
-        GUI.Box(new Rect(DotD + (DotDo * 150), 280, 150, 25), "Heightcheck:" + miscDBG1);*/
-        //Health
-        /*GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Health handling");
-        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + hRecharge);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Refill:" + playerHPRefill);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Max:" + playerMaxHP);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 160, 150, 25), "Refill Time:" + (hRecharge - ((float)playerHPBeginRecharge / 1000)));
-        GUI.Box(new Rect(DotD + (DotDo * 150), 190, 150, 25), "Recharge:" + playerHPBeginRecharge+"/" + ((float)playerHPBeginRecharge / 1000));
-        GUI.Box(new Rect(DotD + (DotDo * 150), 220, 150, 25), "True Health:" + playerHP);*/
-        //Rockets
-        /*GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Rockets");
-        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + rRecharge);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Refill:" + rBeginRecharge);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Max:" + rMax);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 160, 150, 25), "Argh:" + (((float)rReload) / 1000) + "/" + rLastReload) ;
-        GUI.Box(new Rect(DotD + (DotDo * 150), 190, 150, 25), "Is Ready:" + rReady);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 220, 150, 25), "Last Reload:" + rLastReload);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 250, 150, 25), "Recharge:" + rBeginRecharge + "/" + ((float)rBeginRecharge / 1000));
-        GUI.Box(new Rect(DotD + (DotDo * 150), 280, 150, 25), "Load time:" + rReload + "/" + ((float)rReload / 1000));
-        DotDo = 1;
-        GUI.Box(new Rect(DotD + (DotDo * 150), 40, 150, 25), "Machine Gun");
-        GUI.Box(new Rect(DotD + (DotDo * 150), 70, 150, 25), "dTime:" + mRecharge);
-        GUI.Box(new Rect(DotD + (DotDo * 150), 100, 150, 25), "Fire:" + mFireSpeed + "/" + ((float)mFireSpeed));
-        GUI.Box(new Rect(DotD + (DotDo * 150), 130, 150, 25), "Reload:" + mReload + "/" + ((float)mReload));*/
+        if (death)
+        {
+            Time.timeScale = 0.0f;
+            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 50, 200, 100), "You've lost. Retry?"))
+            {
+                utilities.levelRestart();
+            }
+        }
     }
 }
