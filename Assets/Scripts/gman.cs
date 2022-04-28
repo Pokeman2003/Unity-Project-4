@@ -38,6 +38,9 @@ public class gman : MonoBehaviour
     private float playerHPRefill = 3f; //How much health do you regain per second?'
     private bool hUpgrade = false; // Health upgrade. Didn't fit in any other category.
     private bool death = false; //Whether or not you're dead.
+    private bool win = false;
+    private ushort enemeyCount = 0;
+    publicStack<string> countryStack = newStack<string>();
 
     //Recharge delatimers
     private float fRecharge = 0f; //How much deltatime has it been since jetpack(Flying) usage.
@@ -60,16 +63,6 @@ public class gman : MonoBehaviour
     private int mLoaded = 30; //How many rounds in the magazine now?
     private bool mReloadNow = false;
     private bool mReady = true;
-
-    //Some strings
-    private string HealthLabel = "HEALTH";
-    private string AmmunitionLabel = "AMMUNITION";
-    public float miscDBG1;
-    public float miscDBG2;
-    public float miscDBG3;
-
-    private byte win = 4;
-
 
     //Externals
     public int items //Item counter.
@@ -123,6 +116,19 @@ public class gman : MonoBehaviour
         }
     }
 
+    public ushort enemies
+    {
+        get
+        {
+            return enemeyCount;
+        }
+        set
+        {
+            enemeyCount = value;
+            if (enemeyCount == 0) { win = true; }
+        }
+    }
+
     public void giveItem(byte itemType) //Gives the item of choice. 
     { 
         switch(itemType)
@@ -134,10 +140,6 @@ public class gman : MonoBehaviour
                     playerMaxHP = playerMaxHP * 2;
                     hUpgrade = true;
                 }
-                break;
-            case 2: // Rocket upgrade.
-                break;
-            case 3: // Jumpjet upgrade.
                 break;
             case 4: // Jetpack upgrade.
                 if (fUpgrade == false) {
@@ -157,6 +159,10 @@ public class gman : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
+        countryStack.Push("Korea");
+        countryStack.Push("Tunisa");
+        countryStack.Push("Arabia");
+        countryStack.Push("Japan");
     }
 
     // Update is called once per frame
@@ -189,6 +195,11 @@ public class gman : MonoBehaviour
         }
     }
 
+    void printCountry()
+    {
+        Debug.Log("This item is from:" + );
+    }
+
     void OnGUI()
     {
         GUI.Box(new Rect(20, 20, 150, 25), "HEALTH:" + (int)playerHP);
@@ -197,12 +208,12 @@ public class gman : MonoBehaviour
         GUI.Box(new Rect(20, 80, 150, 25), "MACHINE GUN:" + mLoaded + "/" + mMax);
         //GUI.Box(new Rect(20, 80, 150, 25), "ROCKETS:" + rLoaded);
 
-        if (hUpgrade == true && fUpgrade == true)
+        if (win)
         {
             GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "Congratulations, you win!");
             Time.timeScale = 0.0f;
         } else {
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "You have not yet collected all of the powerups.");
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), "You have not yet killed all of the opponents.");
          }
 
         if (death)

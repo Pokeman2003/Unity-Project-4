@@ -35,6 +35,7 @@ public class characterenemy : MonoBehaviour
         initNewPatrol();
 
         Manager = GameObject.Find("GHands").GetComponent<gman>(); //Assign Gman's hands to handle everything.
+        Manager.enemies += 1;
     }
 
     // Update is called once per frame
@@ -63,6 +64,7 @@ public class characterenemy : MonoBehaviour
         if (enemyHP <= 0)
         {
             Debug.Log("I'm DEAD!");
+            Manager.enemies -= 1;
             Destroy(this.gameObject);
         }
     }
