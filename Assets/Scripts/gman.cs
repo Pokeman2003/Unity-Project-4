@@ -40,7 +40,7 @@ public class gman : MonoBehaviour
     private bool death = false; //Whether or not you're dead.
     private bool win = false;
     private ushort enemeyCount = 0;
-    publicStack<string> countryStack = newStack<string>();
+    public Stack<string> countryStack = new Stack<string>();
 
     //Recharge delatimers
     private float fRecharge = 0f; //How much deltatime has it been since jetpack(Flying) usage.
@@ -130,8 +130,9 @@ public class gman : MonoBehaviour
     }
 
     public void giveItem(byte itemType) //Gives the item of choice. 
-    { 
-        switch(itemType)
+    {
+        printCountry();
+        switch (itemType)
         {
             case 1: // Armor upgrade.
                 if (hUpgrade == false) {
@@ -197,7 +198,10 @@ public class gman : MonoBehaviour
 
     void printCountry()
     {
-        Debug.Log("This item is from:" + );
+        var currentItem = countryStack.Pop();
+        var nextItem = countryStack.Peek();
+
+        Debug.Log("This item is from:" + currentItem +". The next item is likely from:" + nextItem);
     }
 
     void OnGUI()
