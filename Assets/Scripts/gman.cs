@@ -41,7 +41,29 @@ public class gman : MonoBehaviour
     private bool win = false;
     private ushort enemeyCount = 0;
     public Stack<string> countryStack = new Stack<string>();
+    public Queue<string> itemSerialKey = new Queue<string>();
+    public HashSet<string> itemBlargh = new HashSet<string>() { "Proving", "I", "Know", "This", "Already." };
 
+    public class itemList<T>
+    {
+        private T _item;
+        public T item
+        {
+            get { return _item; }
+        }
+        
+        public itemList()
+        {
+            Debug.Log("Generic inventory activated.");
+        }
+
+        public void addItem(T newItem)
+        {
+            _item = newItem;
+            Debug.Log("New item added:" + _item);
+        }
+    }
+    
     //Recharge delatimers
     private float fRecharge = 0f; //How much deltatime has it been since jetpack(Flying) usage.
     private float mRecharge = 0f; //How much deltatime has it been since Machinegun usage.
@@ -136,7 +158,7 @@ public class gman : MonoBehaviour
         {
             case 1: // Armor upgrade.
                 if (hUpgrade == false) {
-                    Debug.Log("Armor armed!");
+                    Debug.Log("Armor equipped!");
                     hRecharge = 0f;
                     playerMaxHP = playerMaxHP * 2;
                     hUpgrade = true;
@@ -164,6 +186,19 @@ public class gman : MonoBehaviour
         countryStack.Push("Tunisa");
         countryStack.Push("Arabia");
         countryStack.Push("Japan");
+
+        itemSerialKey.Enqueue("ROK-2833-548-A7V");
+        itemSerialKey.Enqueue("TAF=48M-BON-37789");
+        itemSerialKey.Enqueue("SAL-FIRE-3939-1278387");
+        itemSerialKey.Enqueue("JSDF-928-0041-NIME-482");
+
+        itemBlargh.Add("NOT!");
+        itemBlargh.Remove("Already.");
+
+        itemList<string> inventoryList = new itemList<string>();
+        inventoryList.addItem("Armor");
+        inventoryList.addItem("Jetpack");
+        inventoryList.addItem("Unknown");
     }
 
     // Update is called once per frame
@@ -198,10 +233,45 @@ public class gman : MonoBehaviour
 
     void printCountry()
     {
-        var currentItem = countryStack.Pop();
-        var nextItem = countryStack.Peek();
+        string currentItem;
+        string nextItem;
+        if (countryStack.Count > 0)
+        {
+            currentItem = countryStack.Pop();
+        } else
+        {
+            currentItem = "None";
+        }
+        if (countryStack.Count > 1)
+        {
+            nextItem = countryStack.Peek();
+        } else
+        {
+            nextItem = "None";
+        }
 
-        Debug.Log("This item is from:" + currentItem +". The next item is likely from:" + nextItem);
+        string currentSerial;
+        string nextSerial;
+        if (countryStack.Count > 0)
+        {
+            currentSerial = itemSerialKey.Dequeue();
+        }
+        else
+        {
+            currentSerial = "None";
+        }
+        if (countryStack.Count > 1)
+        {
+            nextSerial = itemSerialKey.Peek();
+        }
+        else
+        {
+            nextSerial = "None";
+        }
+
+
+        Debug.Log("This item is from: " + currentItem +". The next item is likely from: " + nextItem);
+        Debug.Log("This item has the serial key: " + currentSerial + ". The next item likely has: " + nextSerial);
     }
 
     void OnGUI()
