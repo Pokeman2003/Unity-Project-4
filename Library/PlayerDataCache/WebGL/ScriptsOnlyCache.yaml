@@ -20,6 +20,12 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.RawImage
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -50,6 +56,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 84
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 91
@@ -61,9 +69,15 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 2220}
+    - Class: 114
+      Script: {instanceID: 2490}
+    - Class: 114
       Script: {instanceID: 2660}
     - Class: 114
       Script: {instanceID: 2684}
+    - Class: 114
+      Script: {instanceID: 2690}
     - Class: 114
       Script: {instanceID: 4178}
     - Class: 114
@@ -71,7 +85,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4736}
     - Class: 114
+      Script: {instanceID: 5352}
+    - Class: 114
       Script: {instanceID: 5738}
+    - Class: 114
+      Script: {instanceID: 5798}
     - Class: 114
       Script: {instanceID: 7176}
     - Class: 115
@@ -89,6 +107,12 @@ ScriptsOnlyBuild:
     - Class: 198
       Script: {instanceID: 0}
     - Class: 199
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     - Class: 238
       Script: {instanceID: 0}
@@ -930,4 +954,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/VONTHADM/Documents/GitHub/Unity-Project-4/eventfulbuild
+  playerPath: C:/Users/VONTHADM/Documents/GitHub/Unity-Project-4/minimapbuild
