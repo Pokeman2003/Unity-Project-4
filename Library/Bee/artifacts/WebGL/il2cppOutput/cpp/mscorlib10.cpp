@@ -1756,29 +1756,29 @@ struct SerializationEvents_t9F041CF09EEDAA7862FD930BB6C6D6D366E17CB7  : public R
 struct SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37  : public RuntimeObject
 {
 	// System.String[] System.Runtime.Serialization.SerializationInfo::m_members
-	StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* ___m_members_0;
+	StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* ___m_members_3;
 	// System.Object[] System.Runtime.Serialization.SerializationInfo::m_data
-	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___m_data_1;
+	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___m_data_4;
 	// System.Type[] System.Runtime.Serialization.SerializationInfo::m_types
-	TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* ___m_types_2;
+	TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* ___m_types_5;
 	// System.Collections.Generic.Dictionary`2<System.String,System.Int32> System.Runtime.Serialization.SerializationInfo::m_nameToIndex
-	Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* ___m_nameToIndex_3;
+	Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* ___m_nameToIndex_6;
 	// System.Int32 System.Runtime.Serialization.SerializationInfo::m_currMember
-	int32_t ___m_currMember_4;
+	int32_t ___m_currMember_7;
 	// System.Runtime.Serialization.IFormatterConverter System.Runtime.Serialization.SerializationInfo::m_converter
-	RuntimeObject* ___m_converter_5;
+	RuntimeObject* ___m_converter_8;
 	// System.String System.Runtime.Serialization.SerializationInfo::m_fullTypeName
-	String_t* ___m_fullTypeName_6;
+	String_t* ___m_fullTypeName_9;
 	// System.String System.Runtime.Serialization.SerializationInfo::m_assemName
-	String_t* ___m_assemName_7;
+	String_t* ___m_assemName_10;
 	// System.Type System.Runtime.Serialization.SerializationInfo::objectType
-	Type_t* ___objectType_8;
+	Type_t* ___objectType_11;
 	// System.Boolean System.Runtime.Serialization.SerializationInfo::isFullTypeNameSetExplicit
-	bool ___isFullTypeNameSetExplicit_9;
+	bool ___isFullTypeNameSetExplicit_12;
 	// System.Boolean System.Runtime.Serialization.SerializationInfo::isAssemblyNameSetExplicit
-	bool ___isAssemblyNameSetExplicit_10;
+	bool ___isAssemblyNameSetExplicit_13;
 	// System.Boolean System.Runtime.Serialization.SerializationInfo::requireSameTokenInPartialTrust
-	bool ___requireSameTokenInPartialTrust_11;
+	bool ___requireSameTokenInPartialTrust_14;
 };
 
 // System.Runtime.Serialization.SerializationInfoEnumerator
@@ -8204,13 +8204,13 @@ IL_0014:
 IL_0022:
 	{
 		Type_t* L_4 = ___type0;
-		__this->___objectType_8 = L_4;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___objectType_8), (void*)L_4);
+		__this->___objectType_11 = L_4;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___objectType_11), (void*)L_4);
 		Type_t* L_5 = ___type0;
 		String_t* L_6;
 		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(25 /* System.String System.Type::get_FullName() */, L_5);
-		__this->___m_fullTypeName_6 = L_6;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_fullTypeName_6), (void*)L_6);
+		__this->___m_fullTypeName_9 = L_6;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_fullTypeName_9), (void*)L_6);
 		Type_t* L_7 = ___type0;
 		Module_tABB9217F7F2BA3E0F4277D03C2B234A7313BB8D0* L_8;
 		L_8 = VirtualFuncInvoker0< Module_tABB9217F7F2BA3E0F4277D03C2B234A7313BB8D0* >::Invoke(27 /* System.Reflection.Module System.Type::get_Module() */, L_7);
@@ -8218,26 +8218,26 @@ IL_0022:
 		L_9 = VirtualFuncInvoker0< Assembly_t* >::Invoke(7 /* System.Reflection.Assembly System.Reflection.Module::get_Assembly() */, L_8);
 		String_t* L_10;
 		L_10 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.Assembly::get_FullName() */, L_9);
-		__this->___m_assemName_7 = L_10;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_assemName_7), (void*)L_10);
+		__this->___m_assemName_10 = L_10;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_assemName_10), (void*)L_10);
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_11 = (StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)SZArrayNew(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var, (uint32_t)4);
-		__this->___m_members_0 = L_11;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_members_0), (void*)L_11);
+		__this->___m_members_3 = L_11;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_members_3), (void*)L_11);
 		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_12 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)4);
-		__this->___m_data_1 = L_12;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_data_1), (void*)L_12);
+		__this->___m_data_4 = L_12;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_data_4), (void*)L_12);
 		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_13 = (TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB*)(TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB*)SZArrayNew(TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB_il2cpp_TypeInfo_var, (uint32_t)4);
-		__this->___m_types_2 = L_13;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_types_2), (void*)L_13);
+		__this->___m_types_5 = L_13;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_types_5), (void*)L_13);
 		Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* L_14 = (Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588*)il2cpp_codegen_object_new(Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588_il2cpp_TypeInfo_var);
 		Dictionary_2__ctor_mA3C3860EDE2CDD08BBD68C389377BC89D029D968(L_14, /*hidden argument*/Dictionary_2__ctor_mA3C3860EDE2CDD08BBD68C389377BC89D029D968_RuntimeMethod_var);
-		__this->___m_nameToIndex_3 = L_14;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_nameToIndex_3), (void*)L_14);
+		__this->___m_nameToIndex_6 = L_14;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_nameToIndex_6), (void*)L_14);
 		RuntimeObject* L_15 = ___converter1;
-		__this->___m_converter_5 = L_15;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_converter_5), (void*)L_15);
+		__this->___m_converter_8 = L_15;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_converter_8), (void*)L_15);
 		bool L_16 = ___requireSameTokenInPartialTrust2;
-		__this->___requireSameTokenInPartialTrust_11 = L_16;
+		__this->___requireSameTokenInPartialTrust_14 = L_16;
 		return;
 	}
 }
@@ -8245,7 +8245,7 @@ IL_0022:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* SerializationInfo_get_FullTypeName_m00C321527A5E95C2E23A00D7618C6D1B12B72319 (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		String_t* L_0 = __this->___m_fullTypeName_6;
+		String_t* L_0 = __this->___m_fullTypeName_9;
 		return L_0;
 	}
 }
@@ -8253,7 +8253,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* SerializationInfo_get_FullTypeName_
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* SerializationInfo_get_AssemblyName_m158702F8786CBD76973A6E6DFC9D8FF695B3DF8B (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		String_t* L_0 = __this->___m_assemName_7;
+		String_t* L_0 = __this->___m_assemName_10;
 		return L_0;
 	}
 }
@@ -8275,7 +8275,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SerializationInfo_SetType_m5D07E1C380288
 
 IL_000e:
 	{
-		bool L_2 = __this->___requireSameTokenInPartialTrust_11;
+		bool L_2 = __this->___requireSameTokenInPartialTrust_14;
 		if (!L_2)
 		{
 			goto IL_0036;
@@ -8298,7 +8298,7 @@ IL_000e:
 
 IL_0036:
 	{
-		Type_t* L_9 = __this->___objectType_8;
+		Type_t* L_9 = __this->___objectType_11;
 		Type_t* L_10 = ___type0;
 		if ((((RuntimeObject*)(Type_t*)L_9) == ((RuntimeObject*)(Type_t*)L_10)))
 		{
@@ -8307,13 +8307,13 @@ IL_0036:
 	}
 	{
 		Type_t* L_11 = ___type0;
-		__this->___objectType_8 = L_11;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___objectType_8), (void*)L_11);
+		__this->___objectType_11 = L_11;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___objectType_11), (void*)L_11);
 		Type_t* L_12 = ___type0;
 		String_t* L_13;
 		L_13 = VirtualFuncInvoker0< String_t* >::Invoke(25 /* System.String System.Type::get_FullName() */, L_12);
-		__this->___m_fullTypeName_6 = L_13;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_fullTypeName_6), (void*)L_13);
+		__this->___m_fullTypeName_9 = L_13;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_fullTypeName_9), (void*)L_13);
 		Type_t* L_14 = ___type0;
 		Module_tABB9217F7F2BA3E0F4277D03C2B234A7313BB8D0* L_15;
 		L_15 = VirtualFuncInvoker0< Module_tABB9217F7F2BA3E0F4277D03C2B234A7313BB8D0* >::Invoke(27 /* System.Reflection.Module System.Type::get_Module() */, L_14);
@@ -8321,10 +8321,10 @@ IL_0036:
 		L_16 = VirtualFuncInvoker0< Assembly_t* >::Invoke(7 /* System.Reflection.Assembly System.Reflection.Module::get_Assembly() */, L_15);
 		String_t* L_17;
 		L_17 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.Assembly::get_FullName() */, L_16);
-		__this->___m_assemName_7 = L_17;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_assemName_7), (void*)L_17);
-		__this->___isFullTypeNameSetExplicit_9 = (bool)0;
-		__this->___isAssemblyNameSetExplicit_10 = (bool)0;
+		__this->___m_assemName_10 = L_17;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_assemName_10), (void*)L_17);
+		__this->___isFullTypeNameSetExplicit_12 = (bool)0;
+		__this->___isAssemblyNameSetExplicit_13 = (bool)0;
 	}
 
 IL_0076:
@@ -8514,7 +8514,7 @@ IL_0041:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t SerializationInfo_get_MemberCount_mB4ECB820E0C88CF7D1031B09B0E32040DE464B9E (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		int32_t L_0 = __this->___m_currMember_4;
+		int32_t L_0 = __this->___m_currMember_7;
 		return L_0;
 	}
 }
@@ -8522,7 +8522,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t SerializationInfo_get_MemberCount_mB4
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* SerializationInfo_get_ObjectType_m6DAF98498D0EFFBFBFE7BBF6AE478EB377539824 (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		Type_t* L_0 = __this->___objectType_8;
+		Type_t* L_0 = __this->___objectType_11;
 		return L_0;
 	}
 }
@@ -8530,7 +8530,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* SerializationInfo_get_ObjectType_m6DA
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SerializationInfo_get_IsFullTypeNameSetExplicit_m4271142F495B1C51C3F427AE024EBAF98389C347 (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		bool L_0 = __this->___isFullTypeNameSetExplicit_9;
+		bool L_0 = __this->___isFullTypeNameSetExplicit_12;
 		return L_0;
 	}
 }
@@ -8538,7 +8538,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SerializationInfo_get_IsFullTypeNameSetE
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SerializationInfo_get_IsAssemblyNameSetExplicit_m3E1EF542A19D4BAA7C7F51884ED209812BA764DB (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		bool L_0 = __this->___isAssemblyNameSetExplicit_10;
+		bool L_0 = __this->___isAssemblyNameSetExplicit_13;
 		return L_0;
 	}
 }
@@ -8552,10 +8552,10 @@ static bool s_Il2CppMethodInitialized;
 		s_Il2CppMethodInitialized = true;
 	}
 {
-		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_0 = __this->___m_members_0;
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1 = __this->___m_data_1;
-		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_2 = __this->___m_types_2;
-		int32_t L_3 = __this->___m_currMember_4;
+		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_0 = __this->___m_members_3;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1 = __this->___m_data_4;
+		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_2 = __this->___m_types_5;
+		int32_t L_3 = __this->___m_currMember_7;
 		SerializationInfoEnumerator_t810DE600E5F6AA4F2B66A7F56074277CCD8F1540* L_4 = (SerializationInfoEnumerator_t810DE600E5F6AA4F2B66A7F56074277CCD8F1540*)il2cpp_codegen_object_new(SerializationInfoEnumerator_t810DE600E5F6AA4F2B66A7F56074277CCD8F1540_il2cpp_TypeInfo_var);
 		SerializationInfoEnumerator__ctor_m1EB8D190C06925F22B6B93A396B9954C82D82734(L_4, L_0, L_1, L_2, L_3, /*hidden argument*/NULL);
 		return L_4;
@@ -8577,17 +8577,17 @@ int32_t V_0 = 0;
 	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* V_2 = NULL;
 	TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* V_3 = NULL;
 	{
-		int32_t L_0 = __this->___m_currMember_4;
+		int32_t L_0 = __this->___m_currMember_7;
 		V_0 = ((int32_t)il2cpp_codegen_multiply(L_0, 2));
 		int32_t L_1 = V_0;
-		int32_t L_2 = __this->___m_currMember_4;
+		int32_t L_2 = __this->___m_currMember_7;
 		if ((((int32_t)L_1) >= ((int32_t)L_2)))
 		{
 			goto IL_0025;
 		}
 	}
 	{
-		int32_t L_3 = __this->___m_currMember_4;
+		int32_t L_3 = __this->___m_currMember_7;
 		if ((((int32_t)((int32_t)2147483647LL)) <= ((int32_t)L_3)))
 		{
 			goto IL_0025;
@@ -8608,27 +8608,27 @@ IL_0025:
 		int32_t L_8 = V_0;
 		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_9 = (TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB*)(TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB*)SZArrayNew(TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB_il2cpp_TypeInfo_var, (uint32_t)L_8);
 		V_3 = L_9;
-		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_10 = __this->___m_members_0;
+		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_10 = __this->___m_members_3;
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_11 = V_1;
-		int32_t L_12 = __this->___m_currMember_4;
+		int32_t L_12 = __this->___m_currMember_7;
 		Array_Copy_m4239F97ECC23A71F4191B8722362A1AA38E2E98F((RuntimeArray*)L_10, (RuntimeArray*)L_11, L_12, NULL);
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13 = __this->___m_data_1;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13 = __this->___m_data_4;
 		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_14 = V_2;
-		int32_t L_15 = __this->___m_currMember_4;
+		int32_t L_15 = __this->___m_currMember_7;
 		Array_Copy_m4239F97ECC23A71F4191B8722362A1AA38E2E98F((RuntimeArray*)L_13, (RuntimeArray*)L_14, L_15, NULL);
-		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_16 = __this->___m_types_2;
+		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_16 = __this->___m_types_5;
 		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_17 = V_3;
-		int32_t L_18 = __this->___m_currMember_4;
+		int32_t L_18 = __this->___m_currMember_7;
 		Array_Copy_m4239F97ECC23A71F4191B8722362A1AA38E2E98F((RuntimeArray*)L_16, (RuntimeArray*)L_17, L_18, NULL);
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_19 = V_1;
-		__this->___m_members_0 = L_19;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_members_0), (void*)L_19);
+		__this->___m_members_3 = L_19;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_members_3), (void*)L_19);
 		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_20 = V_2;
-		__this->___m_data_1 = L_20;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_data_1), (void*)L_20);
+		__this->___m_data_4 = L_20;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_data_4), (void*)L_20);
 		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_21 = V_3;
-		__this->___m_types_2 = L_21;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_types_2), (void*)L_21);
+		__this->___m_types_5 = L_21;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_types_5), (void*)L_21);
 		return;
 	}
 }
@@ -8913,7 +8913,7 @@ static bool s_Il2CppMethodInitialized;
 		s_Il2CppMethodInitialized = true;
 	}
 {
-		Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* L_0 = __this->___m_nameToIndex_3;
+		Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* L_0 = __this->___m_nameToIndex_6;
 		String_t* L_1 = ___name0;
 		bool L_2;
 		L_2 = Dictionary_2_ContainsKey_mAEDD6BBEE1B37BC5E1D803803352FBE4CF4D3D7E(L_0, L_1, Dictionary_2_ContainsKey_mAEDD6BBEE1B37BC5E1D803803352FBE4CF4D3D7E_RuntimeMethod_var);
@@ -8932,12 +8932,12 @@ static bool s_Il2CppMethodInitialized;
 
 IL_001e:
 	{
-		Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* L_5 = __this->___m_nameToIndex_3;
+		Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* L_5 = __this->___m_nameToIndex_6;
 		String_t* L_6 = ___name0;
-		int32_t L_7 = __this->___m_currMember_4;
+		int32_t L_7 = __this->___m_currMember_7;
 		Dictionary_2_Add_m2FE98C9C3763E31D7CB55207ED3A46B33BF64883(L_5, L_6, L_7, Dictionary_2_Add_m2FE98C9C3763E31D7CB55207ED3A46B33BF64883_RuntimeMethod_var);
-		int32_t L_8 = __this->___m_currMember_4;
-		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_9 = __this->___m_members_0;
+		int32_t L_8 = __this->___m_currMember_7;
+		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_9 = __this->___m_members_3;
 		if ((((int32_t)L_8) < ((int32_t)((int32_t)(((RuntimeArray*)L_9)->max_length)))))
 		{
 			goto IL_0046;
@@ -8949,23 +8949,23 @@ IL_001e:
 
 IL_0046:
 	{
-		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_10 = __this->___m_members_0;
-		int32_t L_11 = __this->___m_currMember_4;
+		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_10 = __this->___m_members_3;
+		int32_t L_11 = __this->___m_currMember_7;
 		String_t* L_12 = ___name0;
 		ArrayElementTypeCheck (L_10, L_12);
 		(L_10)->SetAtUnchecked(static_cast<il2cpp_array_size_t>(L_11), (String_t*)L_12);
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13 = __this->___m_data_1;
-		int32_t L_14 = __this->___m_currMember_4;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13 = __this->___m_data_4;
+		int32_t L_14 = __this->___m_currMember_7;
 		RuntimeObject* L_15 = ___value1;
 		ArrayElementTypeCheck (L_13, L_15);
 		(L_13)->SetAtUnchecked(static_cast<il2cpp_array_size_t>(L_14), (RuntimeObject*)L_15);
-		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_16 = __this->___m_types_2;
-		int32_t L_17 = __this->___m_currMember_4;
+		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_16 = __this->___m_types_5;
+		int32_t L_17 = __this->___m_currMember_7;
 		Type_t* L_18 = ___type2;
 		ArrayElementTypeCheck (L_16, L_18);
 		(L_16)->SetAtUnchecked(static_cast<il2cpp_array_size_t>(L_17), (Type_t*)L_18);
-		int32_t L_19 = __this->___m_currMember_4;
-		__this->___m_currMember_4 = ((int32_t)il2cpp_codegen_add(L_19, 1));
+		int32_t L_19 = __this->___m_currMember_7;
+		__this->___m_currMember_7 = ((int32_t)il2cpp_codegen_add(L_19, 1));
 		return;
 	}
 }
@@ -8994,12 +8994,12 @@ int32_t V_0 = 0;
 
 IL_0016:
 	{
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = __this->___m_data_1;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = __this->___m_data_4;
 		int32_t L_7 = V_0;
 		RuntimeObject* L_8 = ___value1;
 		ArrayElementTypeCheck (L_6, L_8);
 		(L_6)->SetAtUnchecked(static_cast<il2cpp_array_size_t>(L_7), (RuntimeObject*)L_8);
-		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_9 = __this->___m_types_2;
+		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_9 = __this->___m_types_5;
 		int32_t L_10 = V_0;
 		Type_t* L_11 = ___type2;
 		ArrayElementTypeCheck (L_9, L_11);
@@ -9032,7 +9032,7 @@ int32_t V_0 = 0;
 
 IL_000e:
 	{
-		Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* L_2 = __this->___m_nameToIndex_3;
+		Dictionary_2_t5C8F46F5D57502270DD9E1DA8303B23C7FE85588* L_2 = __this->___m_nameToIndex_6;
 		String_t* L_3 = ___name0;
 		bool L_4;
 		L_4 = Dictionary_2_TryGetValue_m835BB1E6EA8A8BF1242B51E28FD65B43FEF68E2A(L_2, L_3, (&V_0), Dictionary_2_TryGetValue_m835BB1E6EA8A8BF1242B51E28FD65B43FEF68E2A_RuntimeMethod_var);
@@ -9082,13 +9082,13 @@ int32_t V_0 = 0;
 IL_0026:
 	{
 		Type_t** L_8 = ___foundType1;
-		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_9 = __this->___m_types_2;
+		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_9 = __this->___m_types_5;
 		int32_t L_10 = V_0;
 		int32_t L_11 = L_10;
 		Type_t* L_12 = (L_9)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_11));
 		*((RuntimeObject**)L_8) = (RuntimeObject*)L_12;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_8, (void*)(RuntimeObject*)L_12);
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13 = __this->___m_data_1;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13 = __this->___m_data_4;
 		int32_t L_14 = V_0;
 		int32_t L_15 = L_14;
 		RuntimeObject* L_16 = (L_13)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_15));
@@ -9120,13 +9120,13 @@ int32_t V_0 = 0;
 IL_0011:
 	{
 		Type_t** L_4 = ___foundType1;
-		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_5 = __this->___m_types_2;
+		TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB* L_5 = __this->___m_types_5;
 		int32_t L_6 = V_0;
 		int32_t L_7 = L_6;
 		Type_t* L_8 = (L_5)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_7));
 		*((RuntimeObject**)L_4) = (RuntimeObject*)L_8;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_4, (void*)(RuntimeObject*)L_8);
-		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9 = __this->___m_data_1;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9 = __this->___m_data_4;
 		int32_t L_10 = V_0;
 		int32_t L_11 = L_10;
 		RuntimeObject* L_12 = (L_9)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_11));
@@ -9216,7 +9216,7 @@ IL_0046:
 
 IL_0048:
 	{
-		RuntimeObject* L_15 = __this->___m_converter_5;
+		RuntimeObject* L_15 = __this->___m_converter_8;
 		RuntimeObject* L_16 = V_1;
 		Type_t* L_17 = ___type1;
 		RuntimeObject* L_18;
@@ -9285,7 +9285,7 @@ IL_001f:
 
 IL_0021:
 	{
-		RuntimeObject* L_10 = __this->___m_converter_5;
+		RuntimeObject* L_10 = __this->___m_converter_8;
 		RuntimeObject* L_11 = V_1;
 		Type_t* L_12 = ___type1;
 		RuntimeObject* L_13;
@@ -9329,7 +9329,7 @@ Type_t* V_0 = NULL;
 
 IL_001e:
 	{
-		RuntimeObject* L_6 = __this->___m_converter_5;
+		RuntimeObject* L_6 = __this->___m_converter_8;
 		RuntimeObject* L_7 = V_1;
 		bool L_8;
 		L_8 = InterfaceFuncInvoker1< bool, RuntimeObject* >::Invoke(1 /* System.Boolean System.Runtime.Serialization.IFormatterConverter::ToBoolean(System.Object) */, IFormatterConverter_t726606DAC82C384B08C82471313C340968DDB609_il2cpp_TypeInfo_var, L_6, L_7);
@@ -9372,7 +9372,7 @@ Type_t* V_0 = NULL;
 
 IL_001e:
 	{
-		RuntimeObject* L_6 = __this->___m_converter_5;
+		RuntimeObject* L_6 = __this->___m_converter_8;
 		RuntimeObject* L_7 = V_1;
 		int32_t L_8;
 		L_8 = InterfaceFuncInvoker1< int32_t, RuntimeObject* >::Invoke(2 /* System.Int32 System.Runtime.Serialization.IFormatterConverter::ToInt32(System.Object) */, IFormatterConverter_t726606DAC82C384B08C82471313C340968DDB609_il2cpp_TypeInfo_var, L_6, L_7);
@@ -9415,7 +9415,7 @@ Type_t* V_0 = NULL;
 
 IL_001e:
 	{
-		RuntimeObject* L_6 = __this->___m_converter_5;
+		RuntimeObject* L_6 = __this->___m_converter_8;
 		RuntimeObject* L_7 = V_1;
 		int64_t L_8;
 		L_8 = InterfaceFuncInvoker1< int64_t, RuntimeObject* >::Invoke(3 /* System.Int64 System.Runtime.Serialization.IFormatterConverter::ToInt64(System.Object) */, IFormatterConverter_t726606DAC82C384B08C82471313C340968DDB609_il2cpp_TypeInfo_var, L_6, L_7);
@@ -9458,7 +9458,7 @@ Type_t* V_0 = NULL;
 
 IL_001e:
 	{
-		RuntimeObject* L_6 = __this->___m_converter_5;
+		RuntimeObject* L_6 = __this->___m_converter_8;
 		RuntimeObject* L_7 = V_1;
 		float L_8;
 		L_8 = InterfaceFuncInvoker1< float, RuntimeObject* >::Invoke(4 /* System.Single System.Runtime.Serialization.IFormatterConverter::ToSingle(System.Object) */, IFormatterConverter_t726606DAC82C384B08C82471313C340968DDB609_il2cpp_TypeInfo_var, L_6, L_7);
@@ -9510,7 +9510,7 @@ IL_001a:
 
 IL_0021:
 	{
-		RuntimeObject* L_7 = __this->___m_converter_5;
+		RuntimeObject* L_7 = __this->___m_converter_8;
 		RuntimeObject* L_8 = V_1;
 		String_t* L_9;
 		L_9 = InterfaceFuncInvoker1< String_t*, RuntimeObject* >::Invoke(5 /* System.String System.Runtime.Serialization.IFormatterConverter::ToString(System.Object) */, IFormatterConverter_t726606DAC82C384B08C82471313C340968DDB609_il2cpp_TypeInfo_var, L_7, L_8);
@@ -27735,7 +27735,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* SafeSerializationE
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Type_t* SerializationInfo_get_ObjectType_m6DAF98498D0EFFBFBFE7BBF6AE478EB377539824_inline (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		Type_t* L_0 = __this->___objectType_8;
+		Type_t* L_0 = __this->___objectType_11;
 		return L_0;
 	}
 }
@@ -27800,28 +27800,28 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR SerializationObjectManager_t11B7F
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t SerializationInfo_get_MemberCount_mB4ECB820E0C88CF7D1031B09B0E32040DE464B9E_inline (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		int32_t L_0 = __this->___m_currMember_4;
+		int32_t L_0 = __this->___m_currMember_7;
 		return L_0;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* SerializationInfo_get_FullTypeName_m00C321527A5E95C2E23A00D7618C6D1B12B72319_inline (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		String_t* L_0 = __this->___m_fullTypeName_6;
+		String_t* L_0 = __this->___m_fullTypeName_9;
 		return L_0;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* SerializationInfo_get_AssemblyName_m158702F8786CBD76973A6E6DFC9D8FF695B3DF8B_inline (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		String_t* L_0 = __this->___m_assemName_7;
+		String_t* L_0 = __this->___m_assemName_10;
 		return L_0;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool SerializationInfo_get_IsFullTypeNameSetExplicit_m4271142F495B1C51C3F427AE024EBAF98389C347_inline (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		bool L_0 = __this->___isFullTypeNameSetExplicit_9;
+		bool L_0 = __this->___isFullTypeNameSetExplicit_12;
 		return L_0;
 	}
 }
@@ -27842,7 +27842,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool TypeInformation_get_HasTypeF
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool SerializationInfo_get_IsAssemblyNameSetExplicit_m3E1EF542A19D4BAA7C7F51884ED209812BA764DB_inline (SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* __this, const RuntimeMethod* method) 
 {
 {
-		bool L_0 = __this->___isAssemblyNameSetExplicit_10;
+		bool L_0 = __this->___isAssemblyNameSetExplicit_13;
 		return L_0;
 	}
 }

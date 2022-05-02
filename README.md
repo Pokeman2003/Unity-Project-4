@@ -14,5 +14,6 @@ Controls happen to be listed on the game page itself.
 
 [Method Madness build.](https://pokeman2003.github.io/Unity-Project-4/methodbuild/index.html)
 
+[Event(Loot) build.](https://pokeman2003.github.io/Unity-Project-4/eventfulbuild/index.html)
 ## Check out our sister game!
 This game was developed in tandem with a similar, but slightly more advanced game. [Check it out here!](https://github.com/Pokeman2003/Unity-Project-5) This is also the precursor to a slightly more simplified secondary game. [Here's that one for your pleasure.](https://github.com/Pokeman2003/Unity-Project-6)

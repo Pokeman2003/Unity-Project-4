@@ -43,10 +43,14 @@ public class gman : MonoBehaviour
     public Stack<string> countryStack = new Stack<string>();
     public Queue<string> itemSerialKey = new Queue<string>();
     public HashSet<string> itemBlargh = new HashSet<string>() { "Proving", "I", "Know", "This", "Already." };
+    
+    public delegate void debugDelegate(string newText);
+    public debugDelegate debug = Print;
 
-    public class itemList<T>
+    public class itemList<T> where T: class
     {
         private T _item;
+
         public T item
         {
             get { return _item; }
@@ -199,6 +203,14 @@ public class gman : MonoBehaviour
         inventoryList.addItem("Armor");
         inventoryList.addItem("Jetpack");
         inventoryList.addItem("Unknown");
+
+        debug("HELLO");
+        logWithDBG(debug);
+
+        //To say I'm frustrated is an understatement.
+        GameObject player = GameObject.Find("Character_Player");
+        characterplayer playerScript = player.GetComponent<characterplayer>();
+        playerScript.playerJump += HandlePlayerJump;
     }
 
     // Update is called once per frame
@@ -298,5 +310,20 @@ public class gman : MonoBehaviour
                 utilities.levelRestart();
             }
         }
+    }
+
+    public static void Print(string newText)
+    {
+        Debug.Log("DBG:" + newText);
+    }
+
+    public void logWithDBG(debugDelegate del)
+    {
+        del("Delegating test... c'mon.");
+    }
+
+    public void HandlePlayerJump()
+    {
+        debug("Swooosh!");
     }
 }

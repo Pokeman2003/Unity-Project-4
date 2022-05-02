@@ -24,7 +24,7 @@ public class characterplayer : MonoBehaviour
     //Jetpack.
     private bool activeJetpack = false;
     //Jumpjet
-    private bool airControl = false;
+    private bool airControl = true;
     private float airMovementX;
     //private float airMovementY;
     private float softAltCap = 32f;
@@ -37,6 +37,10 @@ public class characterplayer : MonoBehaviour
     //Rigidbody and colliders.
     private Rigidbody rB;
     private Collider colliding;
+
+    //Delegate stuff for the book gfdi
+    public delegate void JumpingEvent();
+    public event JumpingEvent playerJump;
 
 
     // Start is called before the first frame update
@@ -79,7 +83,7 @@ public class characterplayer : MonoBehaviour
         mLoaded is set to 0, dumping all of the ammunition
         mReady is set to false, making sure it doesn't activate with ammo.*/
 
-        if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == false) { activeJetpack = true; } else if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == true) { activeJetpack = false; }
+        if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == false) { activeJetpack = true; playerJump(); } else if (Input.GetKeyDown(KeyCode.Z) && activeJetpack == true) { activeJetpack = false; }
 
         /*//No longer necessary, in lieu of the new movement system.
         //Being the "smart" guy I am, I get to drop Time.deltaTime from this calculation by doing it sooner.
